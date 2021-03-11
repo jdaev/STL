@@ -8,25 +8,25 @@ namespace Managers
     {
         private static BulletFactory _instance;
 
-        public static BulletFactory Instance => _instance ?? (_instance = new BulletFactory());
+        public static BulletFactory Instance => _instance ??= new BulletFactory();
 
         private BulletFactory()
         {
         }
 
-        private Dictionary<STLColor, GameObject> bulletPrefabDict;
+        private Dictionary<STLColor, GameObject> _bulletPrefabDict;
 
         private string bulletPrefabPath = "Prefabs/Bullets/";
 
 
         public void Initialize()
         {
-            bulletPrefabDict = new Dictionary<STLColor, GameObject>();
+            _bulletPrefabDict = new Dictionary<STLColor, GameObject>();
             GameObject[] allPrefabs = Resources.LoadAll<GameObject>(bulletPrefabPath);
             foreach (GameObject prefab in allPrefabs)
             {
                 Bullet bullet = prefab.GetComponent<Bullet>();
-                bulletPrefabDict.Add(bullet.color, prefab);
+                _bulletPrefabDict.Add(bullet.color, prefab);
             }
         }
 
@@ -53,13 +53,13 @@ namespace Managers
 
         private Bullet _CreateBullet(STLColor color)
         {
-            if (!bulletPrefabDict.ContainsKey(color))
+            if (!_bulletPrefabDict.ContainsKey(color))
             {
                 Debug.Log("Bullet Not Found");
                 return null;
             }
 
-            GameObject newBulletObj = GameObject.Instantiate(bulletPrefabDict[color]);
+            GameObject newBulletObj = GameObject.Instantiate(_bulletPrefabDict[color]);
             Bullet newBullet = newBulletObj.GetComponent<Bullet>();
             newBullet.Initialize();
             return newBullet;

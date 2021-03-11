@@ -7,16 +7,14 @@ namespace Base
     public class Bullet : MonoBehaviour, IPoolable
     {
         private float _bulletSpeed = 10f;
-        private float _range = 10f;
+        private float _range = 100f;
         private Vector3 _origin;
-        private TrailRenderer _trail;
         
         public STLColor color;
         
         public virtual void Initialize()
         {
             transform.position = _origin;
-            _trail = gameObject.GetComponent<TrailRenderer>();
         }
 
         public void Refresh()
@@ -49,7 +47,6 @@ namespace Base
 
         public void DePooled()
         {
-            _trail.Clear();
         }
 
         public GameObject GetGameObject => gameObject;
