@@ -16,6 +16,8 @@ namespace Managers
             GameManager.Instance.Initialize(blaster);
             UIManager.Instance.Initialize();
             InputManager.Instance.Initialize(leftController,rightController,headset);
+            BulletFactory.Instance.Initialize();
+            BulletManager.Instance.Initialize();
         }
 
         public void Start()
@@ -26,6 +28,7 @@ namespace Managers
         {
             GameManager.Instance.Refresh();
             UIManager.Instance.Refresh();
+            BulletManager.Instance.Refresh();
         }
 
         public void FixedUpdate()

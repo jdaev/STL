@@ -17,11 +17,12 @@ namespace Managers
         public void Initialize(Blaster blaster)
         {
             this._blaster = blaster;
+            _blaster.Initialize();
         }
 
         public void Refresh()
         {
-            
+            _blaster.Refresh();
         }
     }
 }
