@@ -30,7 +30,7 @@ namespace Managers
             }
         }
 
-        public Bullet CreateBullet(STLColor color, Vector3 originPoint)
+        public Bullet CreateBullet(STLColor color, Transform originPoint)
         {
             Bullet res;
             GameObject resObj;
@@ -46,8 +46,8 @@ namespace Managers
                 resObj = res.gameObject;
             }
 
-            resObj.transform.position = originPoint;
-
+            resObj.transform.position = originPoint.position;
+            resObj.transform.rotation = originPoint.rotation;
             return res;
         }
 

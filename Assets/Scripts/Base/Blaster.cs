@@ -23,25 +23,30 @@ public class Blaster : MonoBehaviour
     
     public void Refresh()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (InputManager.Instance.ThumbstickAxis().x < 0 ||  Input.GetKeyDown(KeyCode.Q) )
         {
             SwitchColor(-1);
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (InputManager.Instance.ThumbstickAxis().x > 0 || Input.GetKeyDown(KeyCode.W))
         {
             SwitchColor(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || InputManager.Instance.IsTriggerPressed())
         {
             Fire();
         }
+        
     }
 
     private void Fire()
     {
-        BulletManager.Instance.ShootBullet(_colors[_activeColorIndex], nozzle.transform.position);
+        if (Physics.Raycast(nozzle.transform.position, nozzle.transform.forward, out RaycastHit hit))
+        {
+            Debug.Log(hit.transform.name);
+        }
+        BulletManager.Instance.ShootBullet(_colors[_activeColorIndex], nozzle.transform);
     }
 
     private void SwitchColor(int axis)

@@ -20,9 +20,12 @@ namespace Managers
 
         private ActionBasedController _controller;
 
-        public bool IsTriggerPressed() => _controller.activateAction.action.ReadValue<bool>();
-        public bool IsGripPressed() => _controller.selectAction.action.ReadValue<bool>();
+        public bool IsTriggerPressed() => _controller.activateAction.action.triggered;
+        public bool IsGripPressed() => _controller.selectAction.action.triggered;
 
+        public Vector2 ThumbstickAxis() => _controller.rotateAnchorAction.action.ReadValue<Vector2>();
+        
+        
         public void Initialize(GameObject leftHandController, GameObject rightHandController, GameObject headset)
         {
             this._leftHandController = leftHandController;

@@ -8,8 +8,9 @@ namespace Base
     {
         private float _bulletSpeed = 10f;
         private float _range = 100f;
-        private Vector3 _origin;
         
+        private Vector3 _origin;
+        private Vector3 _destination;
         public STLColor color;
         
         public virtual void Initialize()
@@ -19,11 +20,12 @@ namespace Base
 
         public void Refresh()
         {
-            transform.position += Vector3.forward * (_bulletSpeed * Time.deltaTime);
+            transform.position += transform.forward * (_bulletSpeed * Time.deltaTime);
             OnHitTarget();
             OnReachingRangeEnd();
         }
 
+        
         void OnHitTarget()
         {
         }

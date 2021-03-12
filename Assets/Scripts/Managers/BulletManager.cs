@@ -72,7 +72,7 @@ namespace Managers
             b.Refresh();
     }
 
-    public void ShootBullet(STLColor type, Vector3 originPoint)
+    public void ShootBullet(STLColor type, Transform originPoint)
     {
         Bullet bullet = BulletFactory.Instance.CreateBullet(type, originPoint);
         AddBullet(bullet);
