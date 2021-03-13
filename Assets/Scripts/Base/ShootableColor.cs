@@ -1,4 +1,7 @@
-﻿namespace Base
+﻿using System;
+using UnityEngine.Serialization;
+
+namespace Base
 {
     public enum STLColor
     {
@@ -10,15 +13,16 @@
         Magenta,
     }
 
+    [Serializable]
     public class ShootableColor
     {
-        private STLColor _color;
-        private STLColor[] _weaknesses;
+        public STLColor color;
+        public STLColor[] weaknesses;
 
         public ShootableColor(STLColor color, STLColor[] weaknesses)
         {
-            _color = color;
-            _weaknesses = weaknesses;
+            this.color = color;
+            this.weaknesses = weaknesses;
         }
     }
 }
