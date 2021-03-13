@@ -15,15 +15,16 @@ public class Blaster : MonoBehaviour
     private bool _isFiring;
 
     private Material _colorIndicatorMaterial;
+
     public void Initialize()
     {
         _colorIndicatorMaterial = colorIndicator.GetComponent<MeshRenderer>().material;
         SetIndicatorColor();
     }
-    
+
     public void Refresh()
     {
-        if (InputManager.Instance.ThumbstickAxis().x < 0 ||  Input.GetKeyDown(KeyCode.Q) )
+        if (InputManager.Instance.ThumbstickAxis().x < 0 || Input.GetKeyDown(KeyCode.Q))
         {
             SwitchColor(-1);
         }
@@ -37,17 +38,15 @@ public class Blaster : MonoBehaviour
         {
             Fire();
         }
-        
     }
 
     private void Fire()
     {
-        if (Physics.Raycast(nozzle.transform.position, nozzle.transform.forward, out RaycastHit hit))
-        {
-            Debug.Log(hit.transform.name);
-        }
+        
+
         BulletManager.Instance.ShootBullet(_colors[_activeColorIndex], nozzle.transform);
     }
+
 
     private void SwitchColor(int axis)
     {
@@ -59,12 +58,12 @@ public class Blaster : MonoBehaviour
         {
             _activeColorIndex = _activeColorIndex == (_colors.Length - 1) ? 0 : _activeColorIndex + 1;
         }
+
         SetIndicatorColor();
-        
     }
 
     private void SetIndicatorColor()
     {
-        _colorIndicatorMaterial.color = Values.colorMap[_colors[_activeColorIndex]];
+        _colorIndicatorMaterial.color = Values.ColorMap[_colors[_activeColorIndex]];
     }
 }
