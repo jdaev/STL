@@ -5,6 +5,7 @@ namespace Managers
     public class GameManager
     {
         private Blaster _blaster;
+        private Player _player;
         
         
         #region Singleton
@@ -14,9 +15,10 @@ namespace Managers
 
         #endregion
 
-        public void Initialize(Blaster blaster)
+        public void Initialize(Blaster blaster, Player _player)
         {
             this._blaster = blaster;
+            this._player = _player;
             _blaster.Initialize();
         }
 

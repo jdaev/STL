@@ -9,11 +9,11 @@ namespace Managers
         [SerializeField] private GameObject headset;
         
         [SerializeField] private Blaster blaster;
-        
+        [SerializeField] private Player player;
         
         public void Awake()
         {
-            GameManager.Instance.Initialize(blaster);
+            GameManager.Instance.Initialize(blaster,player);
             UIManager.Instance.Initialize();
             InputManager.Instance.Initialize(leftController,rightController,headset);
             BulletFactory.Instance.Initialize();
