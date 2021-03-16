@@ -21,6 +21,7 @@ namespace Base
     {
         UpTop,
         DownLow,
-        AroundAndAround,
+        AroundLeft,
+        AroundRight,
     }
 }

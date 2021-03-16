@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2371916247510329524}
   - component: {fileID: 2371916247510329527}
   - component: {fileID: 2371916247510329526}
+  - component: {fileID: -7817324010868647248}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -111,3 +112,22 @@ MonoBehaviour:
   color:
     color: 0
     weaknesses: 0200000001000000
+--- !u!95 &-7817324010868647248
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371916247510329417}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 88e15e27ff063af4eb8d08fa4dc72151, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
