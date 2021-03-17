@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿using Managers;
+using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Base
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private SpawnData _spawnData;
+        
+        [SerializeField] private int spawnInterval;
+        [SerializeField] private SpawnPosition spawnPosition;
+        
+        public STLColor color;
 
         private float _secondsElapsed = 0;
         
@@ -13,18 +19,20 @@ namespace Base
             
         }
 
-        public void Refresh()
+        public void Update()
         {
-            if (_secondsElapsed >= _spawnData.SpawnInterval)
+            if (_secondsElapsed >= spawnInterval)
             {
                 SpawnEnemy();
-                _secondsElapsed += Time.deltaTime;
+                _secondsElapsed = 0;
             }
+            else
+                _secondsElapsed += Time.deltaTime;
         }
 
-        public void SpawnEnemy()
+        private void SpawnEnemy()
         {
-            
+            GameManager.Instance.EnemyManager.SpawnEnemy(Values.ShootableColors[color.ToString()],transform);
         }
 
         public void AnimateToSpawn()

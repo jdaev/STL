@@ -2,16 +2,21 @@
 {
     public class PlayerManager
     {
-        private Player _player;
-
-        public void Initialize(Player player)
+        public Player Player;
+        private Blaster _blaster;
+        public void Initialize(Player player,Blaster blaster)
         {
-            this._player = player;
+            this.Player = player;
+            this._blaster = blaster;
+            
+            Player.Initialize();
+            _blaster.Initialize();
         }
 
         public void Refresh()
         {
-            
+            Player.Refresh();
+            _blaster.Refresh();
         }
         
     }

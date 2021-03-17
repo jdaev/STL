@@ -4,9 +4,10 @@ namespace Managers
 {
     public class GameManager
     {
-        private Blaster _blaster;
-        private Player _player;
-        
+
+        public PlayerManager PlayerManager = new PlayerManager();
+        public EnemyManager EnemyManager = new EnemyManager();
+        public EnemyFactory EnemyFactory = new EnemyFactory();
         
         #region Singleton
         private GameManager() { }
@@ -15,16 +16,17 @@ namespace Managers
 
         #endregion
 
-        public void Initialize(Blaster blaster, Player _player)
+        public void Initialize(Blaster blaster, Player player)
         {
-            this._blaster = blaster;
-            this._player = _player;
-            _blaster.Initialize();
+            PlayerManager.Initialize( player,blaster);
+            EnemyFactory.Initialize();
+            EnemyManager.Initialize();
         }
 
         public void Refresh()
         {
-            _blaster.Refresh();
+            PlayerManager.Refresh();
+            EnemyManager.Refresh();
         }
     }
 }

@@ -6,27 +6,23 @@ namespace Managers
 {
     public class EnemyFactory
     {
-        private static EnemyFactory _instance;
-
-        public static EnemyFactory Instance => _instance ??= new EnemyFactory();
-
-        private EnemyFactory()
+        public EnemyFactory()
         {
         }
 
-        private Dictionary<ShootableColor, GameObject> _enemyPrefabDict;
+        private Dictionary<STLColor, GameObject> _enemyPrefabDict;
 
         private string enemyPrefabPath = "Prefabs/Enemies/";
 
 
         public void Initialize()
         {
-            _enemyPrefabDict = new Dictionary<ShootableColor, GameObject>();
+            _enemyPrefabDict = new Dictionary<STLColor, GameObject>();
             GameObject[] allPrefabs = Resources.LoadAll<GameObject>(enemyPrefabPath);
             foreach (GameObject prefab in allPrefabs)
             {
                 Enemy enemy = prefab.GetComponent<Enemy>();
-                _enemyPrefabDict.Add(enemy.color, prefab);
+                _enemyPrefabDict.Add(enemy.color.color, prefab);
             }
         }
 
@@ -53,13 +49,13 @@ namespace Managers
 
         private Enemy _CreateEnemy(ShootableColor color)
         {
-            if (!_enemyPrefabDict.ContainsKey(color))
+            if (!_enemyPrefabDict.ContainsKey(color.color))
             {
                 Debug.Log("Enemy Not Found");
                 return null;
             }
 
-            GameObject newEnemyObj = GameObject.Instantiate(_enemyPrefabDict[color]);
+            GameObject newEnemyObj = GameObject.Instantiate(_enemyPrefabDict[color.color]);
             Enemy newEnemy = newEnemyObj.GetComponent<Enemy>();
             newEnemy.Initialize();
             return newEnemy;

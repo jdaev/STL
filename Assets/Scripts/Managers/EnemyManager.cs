@@ -6,14 +6,11 @@ namespace Managers
 {
     public class EnemyManager
 {
-    private static EnemyManager _instance;
-
-    public static EnemyManager Instance => _instance ??= new EnemyManager();
     private Dictionary<ShootableColor, List<Enemy>> _enemyDict;
     private Stack<Enemy> _enemysToRemoveStack;
     private Stack<Enemy> _enemysToAddStack;
 
-    private EnemyManager()
+    public EnemyManager()
     {
         _enemyDict = new Dictionary<ShootableColor, List<Enemy>>();
         _enemysToRemoveStack = new Stack<Enemy>();
@@ -74,16 +71,16 @@ namespace Managers
 
     public void SpawnEnemy(ShootableColor type, Transform originPoint)
     {
-        Enemy enemy = EnemyFactory.Instance.CreateEnemy(type, originPoint);
+        Enemy enemy = GameManager.Instance.EnemyFactory.CreateEnemy(type, originPoint);
         AddEnemy(enemy);
     }
     
-    public void AddEnemy(Enemy toAdd)
+    private void AddEnemy(Enemy toAdd)
     {
         _enemysToAddStack.Push(toAdd);
     }
 
-    public void RemoveEnemy(Enemy toRemove)
+    private void RemoveEnemy(Enemy toRemove)
     {
         _enemysToRemoveStack.Push(toRemove);
     }
