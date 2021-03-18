@@ -26,7 +26,7 @@ namespace Managers
             }
         }
 
-        public Enemy CreateEnemy(ShootableColor color, Transform originPoint)
+        public Enemy CreateEnemy(ShootableColor color, Transform originPoint, SpawnPosition spawnPosition)
         {
             Enemy res;
             GameObject resObj;
@@ -38,16 +38,17 @@ namespace Managers
             }
             else
             {
-                res = _CreateEnemy(color);
+                res = _CreateEnemy(color,spawnPosition);
                 resObj = res.gameObject;
             }
 
             resObj.transform.position = originPoint.position;
             resObj.transform.rotation = originPoint.rotation;
+            res.spawnPosition = spawnPosition;
             return res;
         }
 
-        private Enemy _CreateEnemy(ShootableColor color)
+        private Enemy _CreateEnemy(ShootableColor color, SpawnPosition spawnPosition)
         {
             if (!_enemyPrefabDict.ContainsKey(color.color))
             {
@@ -57,6 +58,7 @@ namespace Managers
 
             GameObject newEnemyObj = GameObject.Instantiate(_enemyPrefabDict[color.color]);
             Enemy newEnemy = newEnemyObj.GetComponent<Enemy>();
+            newEnemy.spawnPosition = spawnPosition;
             newEnemy.Initialize();
             return newEnemy;
         }
