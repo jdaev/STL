@@ -80,7 +80,7 @@ namespace Managers
         _enemysToAddStack.Push(toAdd);
     }
 
-    private void RemoveEnemy(Enemy toRemove)
+    public void RemoveEnemy(Enemy toRemove)
     {
         _enemysToRemoveStack.Push(toRemove);
     }

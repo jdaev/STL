@@ -40,16 +40,18 @@ namespace Base
             }
         }
 
+        public void Kill()
+        {
+            GameManager.Instance.EnemyManager.RemoveEnemy(this);
+        }
         public void Pooled()
         {
-            throw new NotImplementedException();
         }
 
         public void DePooled()
         {
-            throw new NotImplementedException();
         }
 
-        public GameObject GetGameObject { get; }
+        public GameObject GetGameObject => gameObject;
     }
 }
