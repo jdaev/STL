@@ -7,7 +7,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private float speed = 2f;
-    private int hitCount = 0;
+    
+    public int HitCount { get; private set; } = 0;
     public void Initialize()
     {
         
@@ -27,13 +28,14 @@ public class Player : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Enemy>().Kill();
-            hitCount++;
+            HitCount++;
         }
     }
 
     private void Move()
-    {   if(transform.position.z<85)
-        transform.Translate(transform.forward * (speed * Time.deltaTime));
+    {   
+        if(transform.position.z<387)
+            transform.Translate(transform.forward * (speed * Time.deltaTime));
     }
 
     public void Stop()
