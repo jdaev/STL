@@ -9,9 +9,9 @@ namespace Managers
     private static BulletManager _instance;
 
     public static BulletManager Instance => _instance ??= new BulletManager();
-    private Dictionary<STLColor, List<Bullet>> _bulletDict;
-    private Stack<Bullet> _bulletsToRemoveStack;
-    private Stack<Bullet> _bulletsToAddStack;
+    private readonly Dictionary<STLColor, List<Bullet>> _bulletDict;
+    private readonly Stack<Bullet> _bulletsToRemoveStack;
+    private readonly Stack<Bullet> _bulletsToAddStack;
 
     private BulletManager()
     {
