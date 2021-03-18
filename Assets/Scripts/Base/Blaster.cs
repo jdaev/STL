@@ -24,12 +24,12 @@ public class Blaster : MonoBehaviour
 
     public void Refresh()
     {
-        if (InputManager.Instance.ThumbstickAxis().x < 0 || Input.GetKeyDown(KeyCode.Q))
+        if (InputManager.Instance.IsGripPressed() && InputManager.Instance.ThumbstickAxis().x < 0 || Input.GetKeyDown(KeyCode.Q))
         {
             SwitchColor(-1);
         }
 
-        if (InputManager.Instance.ThumbstickAxis().x > 0 || Input.GetKeyDown(KeyCode.W))
+        if (InputManager.Instance.IsGripPressed() && InputManager.Instance.ThumbstickAxis().x > 0 || Input.GetKeyDown(KeyCode.W))
         {
             SwitchColor(1);
         }
