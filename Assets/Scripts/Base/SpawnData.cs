@@ -1,19 +1,22 @@
-﻿using System;
-
+﻿
 namespace Base
 {
-    [Serializable]
+    [System.Serializable]
     public class SpawnData
     {
-        public ShootableColor Color;
-        public int SpawnInterval;
-        public SpawnPosition SpawnPosition;
+        public string color;
+        public float spawnAtProgressPercentage;
+        public string side; //"RIGHT" OR "LEFT"
+        public int numberToSpawn;
+        public int spawnIntervalInSeconds;
 
-        public SpawnData(ShootableColor color, int spawnInterval, SpawnPosition spawnPosition)
+        public SpawnData(string color, float spawnAtProgressPercentage, string side, string height, int numberToSpawn, int spawnIntervalInSeconds)
         {
-            Color = color;
-            SpawnInterval = spawnInterval;
-            SpawnPosition = spawnPosition;
+            this.color = color;
+            this.spawnAtProgressPercentage = spawnAtProgressPercentage;
+            this.side = side;
+            this.numberToSpawn = numberToSpawn;
+            this.spawnIntervalInSeconds = spawnIntervalInSeconds;
         }
     }
 

@@ -5,87 +5,87 @@ using UnityEngine;
 namespace Managers
 {
     public class BulletManager
-{
-    private static BulletManager _instance;
-
-    public static BulletManager Instance => _instance ??= new BulletManager();
-    private readonly Dictionary<STLColor, List<Bullet>> _bulletDict;
-    private readonly Stack<Bullet> _bulletsToRemoveStack;
-    private readonly Stack<Bullet> _bulletsToAddStack;
-
-    private BulletManager()
     {
-        _bulletDict = new Dictionary<STLColor, List<Bullet>>();
-        _bulletsToRemoveStack = new Stack<Bullet>();
-        _bulletsToAddStack = new Stack<Bullet>();
-    }
+        private static BulletManager _instance;
 
-    public void Initialize()
-    {
-    }
+        public static BulletManager Instance => _instance ??= new BulletManager();
+        private readonly Dictionary<STLColor, List<Bullet>> _bulletDict;
+        private readonly Stack<Bullet> _bulletsToRemoveStack;
+        private readonly Stack<Bullet> _bulletsToAddStack;
 
-    public void Refresh()
-    {
-        while (_bulletsToRemoveStack.Count > 0)
+        private BulletManager()
         {
-            Bullet toRemove = _bulletsToRemoveStack.Pop();
-            STLColor color = toRemove.color;
-            if (!_bulletDict.ContainsKey(color) || !_bulletDict[color].Contains(toRemove))
-            {
-                Debug.LogError("Stack tried to remove element of type: " + color.ToString() +
-                               " but was not found in dictionary?");
-            }
-            else
-            {
-                _bulletDict[color].Remove(toRemove);
-                ObjectPool.Instance.AddToPool(toRemove.color.ToString(), toRemove);
-                if (_bulletDict[color].Count == 0)
-                    _bulletDict.Remove(color);
-            }
+            _bulletDict = new Dictionary<STLColor, List<Bullet>>();
+            _bulletsToRemoveStack = new Stack<Bullet>();
+            _bulletsToAddStack = new Stack<Bullet>();
         }
 
-
-        //Add Bullets to the dictionary from the "toAdd stack"
-        while (_bulletsToAddStack.Count > 0)
+        public void Initialize()
         {
-            Bullet toAdd = _bulletsToAddStack.Pop();
-            STLColor color = toAdd.color;
-
-            if (!_bulletDict.ContainsKey(color)) // || !bulletDict[kv.Key].Contains(kv.Value))
-            {
-                _bulletDict.Add(color, new List<Bullet>() {toAdd});
-            }
-            else if (!_bulletDict[color].Contains(toAdd))
-            {
-                _bulletDict[color].Add(toAdd);
-            }
-            else
-            {
-                //Spotting an error where the same bullet is being initialized twice is almost impossible sometimes
-                Debug.LogError("The bullet you are trying to add is already in the bullet dict");
-            }
         }
 
+        public void Refresh()
+        {
+            while (_bulletsToRemoveStack.Count > 0)
+            {
+                Bullet toRemove = _bulletsToRemoveStack.Pop();
+                STLColor color = toRemove.color;
+                if (!_bulletDict.ContainsKey(color) || !_bulletDict[color].Contains(toRemove))
+                {
+                    Debug.LogError("Stack tried to remove element of type: " + color.ToString() +
+                                   " but was not found in dictionary?");
+                }
+                else
+                {
+                    _bulletDict[color].Remove(toRemove);
+                    ObjectPool.Instance.AddToPool(toRemove.color.ToString(), toRemove);
+                    if (_bulletDict[color].Count == 0)
+                        _bulletDict.Remove(color);
+                }
+            }
 
-        foreach (KeyValuePair<STLColor, List<Bullet>> kv in _bulletDict)
-        foreach (Bullet b in kv.Value)
-            b.Refresh();
-    }
 
-    public void ShootBullet(STLColor type, Transform originPoint)
-    {
-        Bullet bullet = BulletFactory.Instance.CreateBullet(type, originPoint);
-        AddBullet(bullet);
-    }
-    
-    public void AddBullet(Bullet toAdd)
-    {
-        _bulletsToAddStack.Push(toAdd);
-    }
+            //Add Bullets to the dictionary from the "toAdd stack"
+            while (_bulletsToAddStack.Count > 0)
+            {
+                Bullet toAdd = _bulletsToAddStack.Pop();
+                STLColor color = toAdd.color;
 
-    public void RemoveBullet(Bullet toRemove)
-    {
-        _bulletsToRemoveStack.Push(toRemove);
+                if (!_bulletDict.ContainsKey(color)) // || !bulletDict[kv.Key].Contains(kv.Value))
+                {
+                    _bulletDict.Add(color, new List<Bullet>() {toAdd});
+                }
+                else if (!_bulletDict[color].Contains(toAdd))
+                {
+                    _bulletDict[color].Add(toAdd);
+                }
+                else
+                {
+                    //Spotting an error where the same bullet is being initialized twice is almost impossible sometimes
+                    Debug.LogError("The bullet you are trying to add is already in the bullet dict");
+                }
+            }
+
+
+            foreach (KeyValuePair<STLColor, List<Bullet>> kv in _bulletDict)
+            foreach (Bullet b in kv.Value)
+                b.Refresh();
+        }
+
+        public void ShootBullet(STLColor type, Transform originPoint)
+        {
+            Bullet bullet = BulletFactory.Instance.CreateBullet(type, originPoint);
+            AddBullet(bullet);
+        }
+
+        public void AddBullet(Bullet toAdd)
+        {
+            _bulletsToAddStack.Push(toAdd);
+        }
+
+        public void RemoveBullet(Bullet toRemove)
+        {
+            _bulletsToRemoveStack.Push(toRemove);
+        }
     }
-}
 }

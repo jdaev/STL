@@ -23,6 +23,8 @@ namespace Managers
             PlayerManager.Initialize( player,blaster);
             EnemyFactory.Initialize();
             EnemyManager.Initialize();
+            
+            LevelManager.LoadFromJSON();
         }
 
         public void Refresh()
