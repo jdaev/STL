@@ -42,8 +42,6 @@ public class Blaster : MonoBehaviour
 
     private void Fire()
     {
-        
-
         BulletManager.Instance.ShootBullet(_colors[_activeColorIndex], nozzle.transform);
     }
 

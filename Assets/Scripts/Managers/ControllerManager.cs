@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
+using InputDevice = UnityEngine.InputSystem.InputDevice;
 
 namespace Managers
 {
@@ -11,8 +13,6 @@ namespace Managers
         private GameObject _leftHandGameObject;
         private GameObject _headset;
 
-        private InputDevice _leftHandController;
-        private InputDevice _rightHandController;
         #region Singleton
 
         private static ControllerManager _instance;
@@ -21,36 +21,22 @@ namespace Managers
         #endregion
 
 
-        private ActionBasedController _controller;
+        private ActionBasedController _rightHandController;
 
-        public bool IsTriggerPressed() => _controller.activateAction.action.triggered;
-        public bool IsGripPressed() => _controller.selectAction.action.triggered;
+        public bool IsTriggerPressed() => _rightHandController.activateAction.action.triggered;
+        public bool IsGripPressed() => _rightHandController.selectAction.action.triggered;
+        
 
-        public Vector2 ThumbstickAxis() => _controller.rotateAnchorAction.action.ReadValue<Vector2>();
-        
-        
-        
+        public Vector2 ThumbstickAxis() => _rightHandController.rotateAnchorAction.action.ReadValue<Vector2>();
+
+
         public void Initialize(GameObject leftHandController, GameObject rightHandController, GameObject headset)
         {
             this._leftHandGameObject = leftHandController;
             this._rightHandGameObject = rightHandController;
             this._headset = headset;
-            
-            List<InputDevice> inputDevices = new List<InputDevice>();
-            InputDevices.GetDevices(inputDevices);
-            foreach (var device in inputDevices)
-            {
-                if (device.characteristics == InputDeviceCharacteristics.Left)
-                {
-                    _leftHandController = device;
-                }
-                else if (device.characteristics == InputDeviceCharacteristics.Right)
-                {
-                    _rightHandController = device;
-                }
-            }
-            _controller = _rightHandGameObject.GetComponent<ActionBasedController>();
-            
+
+            _rightHandController = _rightHandGameObject.GetComponent<ActionBasedController>();
         }
     }
 }

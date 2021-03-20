@@ -7,7 +7,7 @@ namespace Base
     public class Bullet : MonoBehaviour, IPoolable
     {
         private float _bulletSpeed = 10f;
-        private float _range = 100f;
+        private float _range;
         private Vector3 _origin = Vector3.zero;
 
         public STLColor color;
@@ -15,6 +15,7 @@ namespace Base
         public virtual void Initialize()
         {
             transform.position = _origin;
+            _range = GameManager.Instance.Level.levelLength;
         }
 
         public void Refresh()

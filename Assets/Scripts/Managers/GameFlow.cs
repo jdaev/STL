@@ -11,7 +11,7 @@ namespace Managers
         [SerializeField] private Blaster blaster;
         [SerializeField] private Player player;
         
-        public void Awake()
+        public void Start()
         {
             GameManager.Instance.Initialize(blaster,player);
             UIManager.Instance.Initialize();
@@ -20,9 +20,7 @@ namespace Managers
             BulletManager.Instance.Initialize();
         }
 
-        public void Start()
-        {
-        }
+        
 
         public void Update()
         {

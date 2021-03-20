@@ -6,7 +6,7 @@ namespace Managers
 {
     public class EnemyManager
     {
-        private readonly Dictionary<ShootableColor, List<Enemy>> _enemyDict;
+        private readonly Dictionary<STLColor, List<Enemy>> _enemyDict;
         private readonly Stack<Enemy> _enemysToRemoveStack;
         private readonly Stack<Enemy> _enemysToAddStack;
 
@@ -14,7 +14,7 @@ namespace Managers
 
         public EnemyManager()
         {
-            _enemyDict = new Dictionary<ShootableColor, List<Enemy>>();
+            _enemyDict = new Dictionary<STLColor, List<Enemy>>();
             _enemysToRemoveStack = new Stack<Enemy>();
             _enemysToAddStack = new Stack<Enemy>();
         }
@@ -28,7 +28,7 @@ namespace Managers
             while (_enemysToRemoveStack.Count > 0)
             {
                 Enemy toRemove = _enemysToRemoveStack.Pop();
-                ShootableColor color = toRemove.color;
+                STLColor color = toRemove.color.color;
                 if (!_enemyDict.ContainsKey(color) || !_enemyDict[color].Contains(toRemove))
                 {
                     Debug.LogError("Stack tried to remove element of type: " + color.ToString() +
@@ -37,7 +37,7 @@ namespace Managers
                 else
                 {
                     _enemyDict[color].Remove(toRemove);
-                    ObjectPool.Instance.AddToPool(color.color.ToString(), toRemove);
+                    ObjectPool.Instance.AddToPool(color.ToString(), toRemove);
                     if (_enemyDict[color].Count == 0)
                         _enemyDict.Remove(color);
                 }
@@ -48,7 +48,7 @@ namespace Managers
             while (_enemysToAddStack.Count > 0)
             {
                 Enemy toAdd = _enemysToAddStack.Pop();
-                ShootableColor color = toAdd.color;
+                STLColor color = toAdd.color.color;
 
                 if (!_enemyDict.ContainsKey(color)) // || !enemyDict[kv.Key].Contains(kv.Value))
                 {
@@ -66,7 +66,7 @@ namespace Managers
             }
 
 
-            foreach (KeyValuePair<ShootableColor, List<Enemy>> kv in _enemyDict)
+            foreach (KeyValuePair<STLColor, List<Enemy>> kv in _enemyDict)
             foreach (Enemy b in kv.Value)
                 b.Refresh();
         }
