@@ -6,40 +6,25 @@ namespace Base
 {
     public class EnemySpawner : MonoBehaviour
     {
-        [SerializeField] private int spawnInterval;
-        [SerializeField] private int numberOfEnemiesToSpawn = 1;
-        [SerializeField] private SpawnPosition spawnPosition;
-        [SerializeField] private float spawnAtProgress;
-        public STLColor color;
+        private SpawnPosition _spawnPosition;
+        private float _spawnAtProgress;
+        private string _color;
+        
+        public bool CanSpawn => GameManager.Instance.PlayerProgress > _spawnAtProgress;
 
-        private float _secondsElapsed = 0;
-        private int enemySpawnCount = 0;
-        public void Initialize()
+        public void Initialize(SpawnData spawnData, SpawnPosition spawnPosition)
         {
-        }
-
-        public void Update()
-        {
-            SpawnEnemy();
-        }
-
-        private void SpawnEnemy()
-        {
-            if (_secondsElapsed >= spawnInterval && enemySpawnCount<numberOfEnemiesToSpawn)
-            {
-                if (GameManager.Instance.LevelManager.PlayerProgress> spawnAtProgress)
-                {
-                    GameManager.Instance.EnemyManager.SpawnEnemy(Values.ShootableColors[color.ToString()], transform,
-                        spawnPosition);
-                    enemySpawnCount++;
-                }
-
-                _secondsElapsed = 0;
-            }
-            else
-                _secondsElapsed += Time.deltaTime;
+            this._color = spawnData.color;
+            this._spawnPosition = spawnPosition;
+            this._spawnAtProgress = spawnData.spawnAtProgressPercentage;
         }
 
         
+
+        public void SpawnEnemy()
+        {
+            GameManager.Instance.EnemyManager.SpawnEnemy(Values.ShootableColors[_color], transform,
+                _spawnPosition);
+        }
     }
 }

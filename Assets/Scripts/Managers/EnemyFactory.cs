@@ -30,8 +30,8 @@ namespace Managers
         {
             Enemy res;
             GameObject resObj;
-            IPoolable poolable = ObjectPool.Instance.RetrieveFromPool(color.ToString());
-            if (poolable != null)
+            IPoolable poolable = ObjectPool.Instance.RetrieveFromPool(color.color.ToString());
+            if (poolable != null )
             {
                 resObj = poolable.GetGameObject;
                 res = resObj.GetComponent<Enemy>();

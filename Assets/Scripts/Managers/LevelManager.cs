@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Base;
 using UnityEngine;
 
@@ -6,17 +7,21 @@ namespace Managers
 {
     public class LevelManager
     {
-        private int levelLength = 385;
 
+        public Level Level{
+            get; private set;}
+        
         public float PlayerProgress =>
-            (GameManager.Instance.PlayerManager.Player.transform.position.z / levelLength) * 100;
+            (GameManager.Instance.PlayerManager.Player.transform.position.z / Level.levelLength) * 100;
         
         
 
-        public void LoadFromJSON()
+        public void LoadFromJson()
         {
             string json = File.ReadAllText(Application.streamingAssetsPath +"/Maps/map.json");
-            Level level =  JsonUtility.FromJson<Level>(json);
+            Level =  JsonUtility.FromJson<Level>(json);
+            
+            
         }
 
     }

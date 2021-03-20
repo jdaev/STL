@@ -37,7 +37,7 @@ namespace Managers
                 else
                 {
                     _enemyDict[color].Remove(toRemove);
-                    ObjectPool.Instance.AddToPool(toRemove.color.ToString(), toRemove);
+                    ObjectPool.Instance.AddToPool(color.color.ToString(), toRemove);
                     if (_enemyDict[color].Count == 0)
                         _enemyDict.Remove(color);
                 }

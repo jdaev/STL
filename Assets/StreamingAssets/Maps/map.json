@@ -1,148 +1,108 @@
 {
   "spawnPoints": [
     {
-      "color": "RED",
+      "color": "Blue",
       "spawnAtProgressPercentage": 10,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Green",
       "spawnAtProgressPercentage": 10,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Red",
       "spawnAtProgressPercentage": 20,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Blue",
       "spawnAtProgressPercentage": 20,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Green",
       "spawnAtProgressPercentage": 30,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Blue",
       "spawnAtProgressPercentage": 30,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Red",
       "spawnAtProgressPercentage": 40,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Blue",
       "spawnAtProgressPercentage": 40,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Green",
       "spawnAtProgressPercentage": 50,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Red",
       "spawnAtProgressPercentage": 50,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Blue",
       "spawnAtProgressPercentage": 60,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Green",
       "spawnAtProgressPercentage": 60,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Blue",
       "spawnAtProgressPercentage": 70,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Red",
       "spawnAtProgressPercentage": 70,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Blue",
       "spawnAtProgressPercentage": 80,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Green",
       "spawnAtProgressPercentage": 80,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Blue",
       "spawnAtProgressPercentage": 90,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Green",
       "spawnAtProgressPercentage": 90,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     },
     {
-      "color": "RED",
+      "color": "Red",
       "spawnAtProgressPercentage": 100,
-      "side": "LEFT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Left"
     },
     {
-      "color": "RED",
+      "color": "Red",
       "spawnAtProgressPercentage": 100,
-      "side": "RIGHT",
-      "numberToSpawn": 1,
-      "spawnIntervalInSeconds": 1
+      "side": "Right"
     }
   ],
-  "levelLength": 500,
+  "levelLength": 200,
   "playerSpeed": 2,
-  "soundTrack": "Angels"
-  
+  "soundTrack": "Angels",
+  "spawnDistanceFromPlayer" : 40
 }

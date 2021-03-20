@@ -15,7 +15,7 @@ namespace Managers
         {
             GameManager.Instance.Initialize(blaster,player);
             UIManager.Instance.Initialize();
-            InputManager.Instance.Initialize(leftController,rightController,headset);
+            ControllerManager.Instance.Initialize(leftController,rightController,headset);
             BulletFactory.Instance.Initialize();
             BulletManager.Instance.Initialize();
         }

@@ -2,16 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Base;
+using Managers;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float speed = 2f;
     
     public int HitCount { get; private set; } = 0;
+
     public void Initialize()
     {
-        
+        transform.position.Set(0,GameManager.Instance.PlayerHeight,0);
     }
 
     public void Refresh()
@@ -34,8 +35,9 @@ public class Player : MonoBehaviour
 
     private void Move()
     {   
-        if(transform.position.z<387)
-            transform.Translate(transform.forward * (speed * Time.deltaTime));
+        
+        if(transform.position.z<GameManager.Instance.Level.levelLength)
+            transform.Translate(transform.forward * (GameManager.Instance.Level.playerSpeed * Time.deltaTime));
     }
 
     public void Stop()

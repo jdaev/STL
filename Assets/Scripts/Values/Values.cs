@@ -20,6 +20,11 @@ using UnityEngine;
             {"Green", new ShootableColor(STLColor.Green,new []{STLColor.Red,STLColor.Blue})},
         };
 
+        public enum SpawnPositions
+        {
+            Left,
+            Right,
+        }
 
         
     }

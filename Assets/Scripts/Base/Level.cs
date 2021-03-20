@@ -9,14 +9,16 @@ namespace Base
         public float levelLength;
         public float playerSpeed;
         public string soundtrack;
-        public SpawnData[] spawnPoints;
         
-        public Level(float levelLength, float playerSpeed, string soundtrack, SpawnData[] spawnPoints)
+        public SpawnData[] spawnPoints;
+        public float spawnDistanceFromPlayer;
+        public Level(float levelLength, float playerSpeed, string soundtrack, SpawnData[] spawnPoints, float spawnDistanceFromPlayer)
         {
             this.levelLength = levelLength;
             this.playerSpeed = playerSpeed;
             this.soundtrack = soundtrack;
             this.spawnPoints = spawnPoints;
+            this.spawnDistanceFromPlayer = spawnDistanceFromPlayer;
         }
     }
 }
