@@ -22,12 +22,17 @@ namespace Managers
 
 
         private ActionBasedController _rightHandController;
+        private ActionBasedController _leftHandController;
 
-        public bool IsTriggerPressed() => _rightHandController.activateAction.action.triggered;
-        public bool IsGripPressed() => _rightHandController.selectAction.action.triggered;
+        public bool IsRightTriggerPressed() => _rightHandController.activateAction.action.triggered;
+        public bool IsRightGripPressed() => _rightHandController.selectAction.action.triggered;
         
-
-        public Vector2 ThumbstickAxis() => _rightHandController.rotateAnchorAction.action.ReadValue<Vector2>();
+        public Vector2 RightThumbstickAxis() => _rightHandController.rotateAnchorAction.action.ReadValue<Vector2>();
+        
+        public bool IsLeftTriggerPressed() => _leftHandController.activateAction.action.triggered;
+        public bool IsLeftGripPressed() => _leftHandController.selectAction.action.triggered;
+        
+        public Vector2 LeftThumbstickAxis() => _leftHandController.rotateAnchorAction.action.ReadValue<Vector2>();
 
 
         public void Initialize(GameObject leftHandController, GameObject rightHandController, GameObject headset)
@@ -37,6 +42,7 @@ namespace Managers
             this._headset = headset;
 
             _rightHandController = _rightHandGameObject.GetComponent<ActionBasedController>();
+            _leftHandController = _leftHandGameObject.GetComponent<ActionBasedController>();
         }
     }
 }

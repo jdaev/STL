@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Base;
+using UnityEngine;
 
 namespace Managers
 {
@@ -8,16 +9,15 @@ namespace Managers
         [SerializeField] private GameObject leftController;
         [SerializeField] private GameObject headset;
         
-        [SerializeField] private Blaster blaster;
+        [SerializeField] private Blaster rightBlaster;
+        [SerializeField] private Blaster leftBlaster;
         [SerializeField] private Player player;
         
         public void Start()
         {
-            GameManager.Instance.Initialize(blaster,player);
+            GameManager.Instance.Initialize(rightBlaster,leftBlaster,player);
             UIManager.Instance.Initialize();
             ControllerManager.Instance.Initialize(leftController,rightController,headset);
-            BulletFactory.Instance.Initialize();
-            BulletManager.Instance.Initialize();
         }
 
         
@@ -26,7 +26,6 @@ namespace Managers
         {
             GameManager.Instance.Refresh();
             UIManager.Instance.Refresh();
-            BulletManager.Instance.Refresh();
         }
 
         public void FixedUpdate()

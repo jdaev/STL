@@ -26,9 +26,9 @@ namespace Managers
 
         #endregion
 
-        public void Initialize(Blaster blaster, Player player)
+        public void Initialize(Blaster rightBlaster,Blaster leftBlaster, Player player)
         {
-            PlayerManager.Initialize( player,blaster);
+            PlayerManager.Initialize( player,rightBlaster,leftBlaster);
             EnemyFactory.Initialize();
             EnemyManager.Initialize();
             EnemySpawnerManager.Initialize();

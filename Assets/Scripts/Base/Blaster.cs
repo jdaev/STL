@@ -1,67 +1,121 @@
-using System.Collections;
-using System.Collections.Generic;
-using Base;
 using Managers;
 using UnityEngine;
 
-public class Blaster : MonoBehaviour
+namespace Base
 {
-    [SerializeField] private GameObject nozzle;
-    [SerializeField] private GameObject colorIndicator;
-
-    private int _activeColorIndex = 0;
-    private STLColor[] _colors = new[] {STLColor.Red, STLColor.Blue, STLColor.Green};
-
-    private bool _isFiring;
-
-    private Material _colorIndicatorMaterial;
-
-    public void Initialize()
+    public class Blaster : MonoBehaviour
     {
-        _colorIndicatorMaterial = colorIndicator.GetComponent<MeshRenderer>().material;
-        SetIndicatorColor();
+        [SerializeField] private GameObject nozzle;
+        [SerializeField] private GameObject colorIndicator;
+        [SerializeField] private Controller controller;
+        private int _activeColorIndex = 0;
+        private float _range = 100f;
+        private STLColor[] _colors = new[] {STLColor.Red, STLColor.Blue, STLColor.Green};
+
+    
+
+        private Material _colorIndicatorMaterial;
+        private AudioSource _audioSource;
+        private LaserBullet _laserBullet;
+        public void Initialize()
+        {
+            _colorIndicatorMaterial = colorIndicator.GetComponent<MeshRenderer>().material;
+            _audioSource = GetComponent<AudioSource>();
+            
+            SetIndicatorColor();
+        }
+        
+        //Separate function because the controller may connect and disconnect, or not initialize at first
+        
+        private void LoadLaser()
+        {
+            _laserBullet = nozzle. transform.GetComponentInChildren<LaserBullet>();
+        }
+        
+        public void Refresh()
+        {
+            if(controller == Controller.Right)
+            {
+                if (ControllerManager.Instance.IsRightGripPressed() &&
+                    ControllerManager.Instance.RightThumbstickAxis().x < 0 || Input.GetKeyDown(KeyCode.Q))
+                {
+                    SwitchColor(-1);
+                }
+
+                if (ControllerManager.Instance.IsRightGripPressed() &&
+                    ControllerManager.Instance.RightThumbstickAxis().x > 0 || Input.GetKeyDown(KeyCode.W))
+                {
+                    SwitchColor(1);
+                }
+
+                if (Input.GetKeyDown(KeyCode.S) || ControllerManager.Instance.IsRightTriggerPressed())
+                {
+                    Fire();
+                }
+            }
+            else
+            {
+                if (ControllerManager.Instance.IsLeftGripPressed() &&
+                    ControllerManager.Instance.LeftThumbstickAxis().x < 0 || Input.GetKeyDown(KeyCode.Q))
+                {
+                    SwitchColor(-1);
+                }
+
+                if (ControllerManager.Instance.IsLeftGripPressed() &&
+                    ControllerManager.Instance.LeftThumbstickAxis().x > 0 || Input.GetKeyDown(KeyCode.W))
+                {
+                    SwitchColor(1);
+                }
+
+                if (Input.GetKeyDown(KeyCode.S) || ControllerManager.Instance.IsLeftTriggerPressed())
+                {
+                    Fire();
+                }
+            }
+        }
+
+        private void Fire()
+        {
+            _audioSource.Play();
+            LoadLaser();
+            _laserBullet.SetColor(_colors[_activeColorIndex]);
+            _laserBullet.Play();
+            
+            RaycastHit raycastHit;
+            bool hasHit = Physics.Raycast(nozzle.transform.position, nozzle.transform.forward, out raycastHit, _range);
+            if(hasHit){
+                var enemy = raycastHit.transform.gameObject.GetComponent<Enemy>();
+                if (enemy)
+                {
+                    enemy.OnBulletHit(_colors[_activeColorIndex]);
+                }
+            }
+        }
+
+
+        private void SwitchColor(int axis)
+        {
+            if (axis < 0)
+            {
+                _activeColorIndex = _activeColorIndex == 0 ? _colors.Length - 1 : _activeColorIndex - 1;
+            }
+            else
+            {
+                _activeColorIndex = _activeColorIndex == (_colors.Length - 1) ? 0 : _activeColorIndex + 1;
+            }
+
+            SetIndicatorColor();
+        }
+
+        private void SetIndicatorColor()
+        {
+            _colorIndicatorMaterial.color = Values.ColorMap[_colors[_activeColorIndex]];
+        }
     }
 
-    public void Refresh()
+    public enum Controller
     {
-        if (ControllerManager.Instance.IsGripPressed() && ControllerManager.Instance.ThumbstickAxis().x < 0 || Input.GetKeyDown(KeyCode.Q))
-        {
-            SwitchColor(-1);
-        }
-
-        if (ControllerManager.Instance.IsGripPressed() && ControllerManager.Instance.ThumbstickAxis().x > 0 || Input.GetKeyDown(KeyCode.W))
-        {
-            SwitchColor(1);
-        }
-
-        if (Input.GetKeyDown(KeyCode.S) || ControllerManager.Instance.IsTriggerPressed())
-        {
-            Fire();
-        }
-    }
-
-    private void Fire()
-    {
-        BulletManager.Instance.ShootBullet(_colors[_activeColorIndex], nozzle.transform);
-    }
-
-
-    private void SwitchColor(int axis)
-    {
-        if (axis < 0)
-        {
-            _activeColorIndex = _activeColorIndex == 0 ? _colors.Length - 1 : _activeColorIndex - 1;
-        }
-        else
-        {
-            _activeColorIndex = _activeColorIndex == (_colors.Length - 1) ? 0 : _activeColorIndex + 1;
-        }
-
-        SetIndicatorColor();
-    }
-
-    private void SetIndicatorColor()
-    {
-        _colorIndicatorMaterial.color = Values.ColorMap[_colors[_activeColorIndex]];
+        Left,
+        Right
     }
 }

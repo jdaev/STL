@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using Base;
+using UnityEngine;
 
 namespace Managers
 {
     public class PlayerManager
     {
         public Player Player;
-        private Blaster _blaster;
+        private Blaster _rightBlaster;
+        private Blaster _leftBlaster;
 
         public int Score { get; private set; } = 0;
 
@@ -25,20 +27,22 @@ namespace Managers
         private int _lastHitCount = 0;
         private int _lastKillCount = 0;
 
-        public void Initialize(Player player, Blaster blaster)
+        public void Initialize(Player player, Blaster rightBlaster,Blaster leftBlaster)
         {
-            this.Player = player;
-            this._blaster = blaster;
+            Player = player;
+            _rightBlaster = rightBlaster;
+            _leftBlaster = leftBlaster;
 
             Player.Initialize();
-            _blaster.Initialize();
+            _rightBlaster.Initialize();
+            _leftBlaster.Initialize();
         }
 
         public void Refresh()
         {
             Player.Refresh();
-            _blaster.Refresh();
-
+            _rightBlaster.Refresh();
+            _leftBlaster.Refresh();
             HitTimer();
             StreakTimer();
         }
