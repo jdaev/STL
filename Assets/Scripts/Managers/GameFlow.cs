@@ -12,10 +12,10 @@ namespace Managers
         [SerializeField] private Blaster rightBlaster;
         [SerializeField] private Blaster leftBlaster;
         [SerializeField] private Player player;
-        
+        [SerializeField] private AudioSource musicSource;
         public void Start()
         {
-            GameManager.Instance.Initialize(rightBlaster,leftBlaster,player);
+            GameManager.Instance.Initialize(rightBlaster,leftBlaster,player,musicSource);
             UIManager.Instance.Initialize();
             ControllerManager.Instance.Initialize(leftController,rightController,headset);
         }

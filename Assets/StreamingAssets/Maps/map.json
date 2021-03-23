@@ -3,106 +3,106 @@
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 10,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 10,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 20,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 20,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 30,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 30,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 40,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 40,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 50,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 50,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 60,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 60,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 70,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 70,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 80,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 80,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 90,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 90,
-      "side": "FrontRight"
+      "position": 1
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 100,
-      "side": "FrontLeft"
+      "position": 0
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 100,
-      "side": "FrontRight"
+      "position": 1
     }
   ],
   "levelLength": 200,
   "playerSpeed": 2,
-  "soundTrack": "Angels",
+  "soundtrack": "Astronomia",
   "spawnDistanceFromPlayer" : 40
 }

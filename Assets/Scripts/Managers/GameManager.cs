@@ -12,10 +12,11 @@ namespace Managers
         public readonly EnemyFactory EnemyFactory = new EnemyFactory();
         public readonly ProjectileManager ProjectileManager = new ProjectileManager();
         public readonly ProjectileFactory ProjectileFactory = new ProjectileFactory();
+        public readonly EnemySpawnerManager EnemySpawnerManager = new EnemySpawnerManager();
         
-        private readonly EnemySpawnerManager _enemySpawnerManager = new EnemySpawnerManager();
         private readonly LevelManager _levelManager = new LevelManager();
-        
+
+        public AudioSource MusicSource;
         public Level Level => _levelManager.Level;
         public float PlayerProgress => _levelManager.PlayerProgress;
 
@@ -28,8 +29,10 @@ namespace Managers
 
         #endregion
 
-        public void Initialize(Blaster rightBlaster,Blaster leftBlaster, Player player)
+        public void Initialize(Blaster rightBlaster,Blaster leftBlaster, Player player,AudioSource musicSource)
         {
+            MusicSource = musicSource;
+            
             PlayerManager.Initialize( player,rightBlaster,leftBlaster);
             
             EnemyFactory.Initialize();
@@ -38,7 +41,7 @@ namespace Managers
             ProjectileFactory.Initialize();
             ProjectileManager.Initialize();
             
-            _enemySpawnerManager.Initialize();
+            EnemySpawnerManager.Initialize();
             StartGame();
             
         }
@@ -46,10 +49,7 @@ namespace Managers
         public void StartGame()
         {
             _levelManager.LoadFromJson();
-            foreach (var spawnPoint in Level.spawnPoints)
-            {
-                _enemySpawnerManager.AddEnemySpawner(spawnPoint, Level.levelLength, Level.spawnDistanceFromPlayer);
-            }
+            
         }
 
         public void Refresh()
@@ -58,7 +58,7 @@ namespace Managers
             EnemyManager.Refresh();
             ProjectileManager.Refresh();
             
-            _enemySpawnerManager.Refresh();
+            EnemySpawnerManager.Refresh();
             
         }
 

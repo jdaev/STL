@@ -110,6 +110,7 @@ namespace Base
         private void SetIndicatorColor()
         {
             _colorIndicatorMaterial.color = Values.ColorMap[_colors[_activeColorIndex]];
+            
         }
     }
 
