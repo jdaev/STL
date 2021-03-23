@@ -62,7 +62,7 @@ namespace Managers
                 b.Refresh();
         }
 
-        public void SpawnProjectile(ShootableColor type, Transform originPoint, SpawnPosition spawnPosition)
+        public void SpawnProjectile(ShootableColor type, Transform originPoint)
         {
             Projectile projectile = GameManager.Instance.ProjectileFactory.CreateProjectile(originPoint);
             AddProjectile(projectile);

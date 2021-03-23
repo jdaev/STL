@@ -3,102 +3,102 @@
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 10,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 10,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 20,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 20,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 30,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 30,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 40,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 40,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 50,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 50,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 60,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 60,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 70,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 70,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 80,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 80,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Blue",
       "spawnAtProgressPercentage": 90,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Green",
       "spawnAtProgressPercentage": 90,
-      "side": "Right"
+      "side": "FrontRight"
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 100,
-      "side": "Left"
+      "side": "FrontLeft"
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 100,
-      "side": "Right"
+      "side": "FrontRight"
     }
   ],
   "levelLength": 200,

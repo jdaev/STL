@@ -71,9 +71,9 @@ namespace Managers
                 b.Refresh();
         }
 
-        public void SpawnEnemy(ShootableColor type, Transform originPoint, SpawnPosition spawnPosition)
+        public void SpawnEnemy(ShootableColor type, Transform originPoint)
         {
-            Enemy enemy = GameManager.Instance.EnemyFactory.CreateEnemy(type, originPoint, spawnPosition);
+            Enemy enemy = GameManager.Instance.EnemyFactory.CreateEnemy(type, originPoint);
             AddEnemy(enemy);
         }
 

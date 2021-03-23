@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Base;
 using UnityEngine;
@@ -9,6 +10,7 @@ namespace Managers
     {
         private readonly Queue<EnemySpawner> _enemySpawners;
         private GameObject _spawnerParent;
+
         public EnemySpawnerManager()
         {
             _spawnerParent = new GameObject();
@@ -20,22 +22,38 @@ namespace Managers
             GameObject spawner = new GameObject("EnemySpawner");
             spawner.transform.SetParent(_spawnerParent.transform);
             EnemySpawner enemySpawner;
-            
-            if (spawnData.side == Values.SpawnPositions.Left.ToString())
+            var position = spawner.transform.position;
+            var playerHeight = GameManager.Instance.PlayerHeight;
+            var spawnZ = (levelLength * (spawnData.spawnAtProgressPercentage) / 100) + spawnDelay;
+            switch (spawnData.position)
             {
-                spawner.transform.position =
-                    new Vector3(-6, GameManager.Instance.PlayerHeight, ((levelLength * (spawnData.spawnAtProgressPercentage) / 100)+spawnDelay));
-                enemySpawner = spawner.AddComponent<EnemySpawner>();
-                enemySpawner.Initialize(spawnData, SpawnPosition.AroundLeft);
-            }
-            else
-            {
-                spawner.transform.position =
-                    new Vector3(6, GameManager.Instance.PlayerHeight, ((levelLength * (spawnData.spawnAtProgressPercentage) / 100)+spawnDelay));
-                enemySpawner = spawner.AddComponent<EnemySpawner>();
-                enemySpawner.Initialize(spawnData, SpawnPosition.AroundRight);
+                case SpawnPosition.Center:
+                    spawner.transform.position =
+                        new Vector3(0, playerHeight + 2, spawnZ);
+                    break;
+                case SpawnPosition.FrontLeft:
+                    spawner.transform.position =
+                        new Vector3(-3, playerHeight, spawnZ + 2);
+
+                    break;
+                case SpawnPosition.FrontRight:
+                    spawner.transform.position =
+                        new Vector3(3, playerHeight, spawnZ + 2);
+
+                    break;
+                case SpawnPosition.SideLeft:
+                    spawner.transform.position =
+                        new Vector3(-6, playerHeight, spawnZ);
+                    break;
+                case SpawnPosition.SideRight:
+                    spawner.transform.position =
+                        new Vector3(6, playerHeight, spawnZ);
+
+                    break;
             }
 
+            enemySpawner = spawner.AddComponent<EnemySpawner>();
+            enemySpawner.Initialize(spawnData);
             _enemySpawners.Enqueue(enemySpawner);
         }
 

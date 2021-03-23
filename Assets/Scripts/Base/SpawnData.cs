@@ -6,21 +6,14 @@ namespace Base
     {
         public string color;
         public float spawnAtProgressPercentage;
-        public string side; //"RIGHT" OR "LEFT"
+        public SpawnPosition position; 
 
-        public SpawnData(string color, float spawnAtProgressPercentage, string side)
+        public SpawnData(string color, float spawnAtProgressPercentage, SpawnPosition position)
         {
             this.color = color;
             this.spawnAtProgressPercentage = spawnAtProgressPercentage;
-            this.side = side;
+            this.position = position;
         }
     }
-
-    public enum SpawnPosition
-    {
-        UpTop,
-        DownLow,
-        AroundLeft,
-        AroundRight,
-    }
+    
 }

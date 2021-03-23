@@ -8,27 +8,28 @@ namespace Base
     public class Enemy : MonoBehaviour, IPoolable
     {
         public ShootableColor color;
-        public SpawnPosition spawnPosition;
-        private Animator _animator;
         private float speed = 10f;
-        private static readonly int SpawnPosition = Animator.StringToHash("SpawnPosition");
 
         public void Initialize()
         {
-            _animator = gameObject.GetComponent<Animator>();
-            int i = (int) spawnPosition;
-            _animator.SetInteger(SpawnPosition, (int) spawnPosition);
         }
-        bool AnimatorIsPlaying(){
-            return _animator.GetCurrentAnimatorStateInfo(0).length >
-                   _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-        }
+        // bool AnimatorIsPlaying(){
+        //     return _animator.GetCurrentAnimatorStateInfo(0).length >
+        //            _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+        // }
         public void Refresh()
         {   
-            if(!AnimatorIsPlaying())
-                Move();
+            LookAtPlayer();
         }
 
+        private void LookAtPlayer()
+        {
+            Transform target = GameManager.Instance.PlayerManager.Player.transform;
+            Vector3 relativePos = target.position - transform.position;
+            Quaternion toRotation = Quaternion.LookRotation(relativePos);
+            transform.rotation =  Quaternion.Lerp(transform.rotation, toRotation, speed * Time.deltaTime);
+        }
+        
         private void Move()
         {
             transform.position= Vector3.MoveTowards(transform.position,
