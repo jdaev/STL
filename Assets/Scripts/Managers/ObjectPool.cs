@@ -24,8 +24,8 @@ namespace Managers
             if (!_pooledObjects.ContainsKey(objName))
                 _pooledObjects.Add(objName, new Stack<IPoolable>());
             _pooledObjects[objName].Push(poolable);
-            poolable.GetGameObject.transform.SetParent(_objectPoolParent);
-            poolable.GetGameObject.SetActive(false);
+            poolable.gameObject.transform.SetParent(_objectPoolParent);
+            poolable.gameObject.SetActive(false);
             poolable.Pooled(); 
         }
 
@@ -34,8 +34,8 @@ namespace Managers
             if (_pooledObjects.ContainsKey(objectName) && _pooledObjects[objectName].Count > 0)
             {
                 IPoolable toRet = _pooledObjects[objectName].Pop();
-                toRet.GetGameObject.transform.SetParent(null);
-                toRet.GetGameObject.SetActive(true);
+                toRet.gameObject.transform.SetParent(null);
+                toRet.gameObject.SetActive(true);
                 toRet.DePooled(); 
                 return toRet;
             }

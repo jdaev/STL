@@ -33,7 +33,7 @@ namespace Managers
             IPoolable poolable = ObjectPool.Instance.RetrieveFromPool(color.color.ToString());
             if (poolable != null )
             {
-                resObj = poolable.GetGameObject;
+                resObj = poolable.gameObject;
                 res = resObj.GetComponent<Enemy>();
             }
             else

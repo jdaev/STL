@@ -55,6 +55,5 @@ namespace Base
         {
         }
 
-        public GameObject GetGameObject => gameObject;
     }
 }

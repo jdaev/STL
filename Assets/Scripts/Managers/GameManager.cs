@@ -10,12 +10,14 @@ namespace Managers
         public readonly PlayerManager PlayerManager = new PlayerManager();
         public readonly EnemyManager EnemyManager = new EnemyManager();
         public readonly EnemyFactory EnemyFactory = new EnemyFactory();
+        public readonly ProjectileManager ProjectileManager = new ProjectileManager();
+        public readonly ProjectileFactory ProjectileFactory = new ProjectileFactory();
         
-        private readonly EnemySpawnerManager EnemySpawnerManager = new EnemySpawnerManager();
-        private readonly LevelManager LevelManager = new LevelManager();
+        private readonly EnemySpawnerManager _enemySpawnerManager = new EnemySpawnerManager();
+        private readonly LevelManager _levelManager = new LevelManager();
         
-        public Level Level => LevelManager.Level;
-        public float PlayerProgress => LevelManager.PlayerProgress;
+        public Level Level => _levelManager.Level;
+        public float PlayerProgress => _levelManager.PlayerProgress;
 
         public float PlayerHeight { get; private set; } = 1.8f;
         
@@ -29,19 +31,24 @@ namespace Managers
         public void Initialize(Blaster rightBlaster,Blaster leftBlaster, Player player)
         {
             PlayerManager.Initialize( player,rightBlaster,leftBlaster);
+            
             EnemyFactory.Initialize();
             EnemyManager.Initialize();
-            EnemySpawnerManager.Initialize();
+            
+            ProjectileFactory.Initialize();
+            ProjectileManager.Initialize();
+            
+            _enemySpawnerManager.Initialize();
             StartGame();
             
         }
 
         public void StartGame()
         {
-            LevelManager.LoadFromJson();
+            _levelManager.LoadFromJson();
             foreach (var spawnPoint in Level.spawnPoints)
             {
-                EnemySpawnerManager.AddEnemySpawner(spawnPoint, Level.levelLength, Level.spawnDistanceFromPlayer);
+                _enemySpawnerManager.AddEnemySpawner(spawnPoint, Level.levelLength, Level.spawnDistanceFromPlayer);
             }
         }
 
@@ -49,7 +56,10 @@ namespace Managers
         {
             PlayerManager.Refresh();
             EnemyManager.Refresh();
-            EnemySpawnerManager.Refresh();
+            ProjectileManager.Refresh();
+            
+            _enemySpawnerManager.Refresh();
+            
         }
 
         public void ReloadScene()

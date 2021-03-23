@@ -6,6 +6,5 @@ namespace Base
     {
         void Pooled();
         void DePooled();
-        GameObject GetGameObject { get; }
-    }
+        GameObject gameObject { get ; }     }
 }
