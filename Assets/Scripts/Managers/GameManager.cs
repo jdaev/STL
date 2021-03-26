@@ -13,10 +13,10 @@ namespace Managers
         public readonly ProjectileManager ProjectileManager = new ProjectileManager();
         public readonly ProjectileFactory ProjectileFactory = new ProjectileFactory();
         public readonly EnemySpawnerManager EnemySpawnerManager = new EnemySpawnerManager();
-        
+        public readonly AudioManager AudioManager = new AudioManager();
         private readonly LevelManager _levelManager = new LevelManager();
 
-        public AudioSource MusicSource;
+        public AudioSource GameAudioSource;
         public Level Level => _levelManager.Level;
         public float PlayerProgress => _levelManager.PlayerProgress;
 
@@ -29,9 +29,10 @@ namespace Managers
 
         #endregion
 
-        public void Initialize(Blaster rightBlaster,Blaster leftBlaster, Player player,AudioSource musicSource)
+        public void Initialize(Blaster rightBlaster,Blaster leftBlaster, Player player,AudioSource audioSource)
         {
-            MusicSource = musicSource;
+            GameAudioSource = audioSource;
+            
             
             PlayerManager.Initialize( player,rightBlaster,leftBlaster);
             
@@ -48,8 +49,9 @@ namespace Managers
 
         public void StartGame()
         {
-            _levelManager.LoadFromJson();
-            
+            _levelManager.LoadLevel();
+            AudioManager.Initialize();
+            AudioManager.PlaySoundtrack();
         }
 
         public void Refresh()

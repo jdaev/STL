@@ -30,6 +30,7 @@ public enum SpawnPosition
     SideRight,
 }
 
+
 public enum GameTags
 {
     Enemy,

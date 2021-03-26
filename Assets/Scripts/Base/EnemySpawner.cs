@@ -8,7 +8,7 @@ namespace Base
     {
         private float _spawnAtProgress;
         private string _color;
-        
+
         public bool CanSpawn => GameManager.Instance.PlayerProgress > _spawnAtProgress;
 
         public void Initialize(SpawnData spawnData)
@@ -17,12 +17,11 @@ namespace Base
             this._spawnAtProgress = spawnData.spawnAtProgressPercentage;
         }
 
-        
 
         public void SpawnEnemy()
         {
             GameManager.Instance.EnemyManager.SpawnEnemy(Values.ShootableColors[_color], transform
-                );
+            );
         }
     }
 }

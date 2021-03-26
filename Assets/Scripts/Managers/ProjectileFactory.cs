@@ -39,7 +39,9 @@ namespace Managers
             }
 
             resObj.transform.position = originPoint.position;
-            resObj.transform.rotation = originPoint.rotation;
+            //resObj.transform.rotation = originPoint.rotation;
+            
+            res.Initialize();
             return res;
         }
 
@@ -49,7 +51,6 @@ namespace Managers
 
             GameObject newProjectileObj = Object.Instantiate(_projectilePrefab);
             Projectile newProjectile = newProjectileObj.GetComponent<Projectile>();
-            newProjectile.Initialize();
             return newProjectile;
         }
     }
