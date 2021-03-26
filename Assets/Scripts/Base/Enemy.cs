@@ -9,7 +9,7 @@ namespace Base
     {
         public ShootableColor color;
         private float speed = 10f;
-
+        private bool hasShot = false;
         public void Initialize()
         {
         }
@@ -20,6 +20,11 @@ namespace Base
         public void Refresh()
         {   
             LookAtPlayer();
+            if (!hasShot && Vector3.Angle(transform.position,GameManager.Instance.PlayerManager.Player.transform.position)<5)
+            {
+                GameManager.Instance.ProjectileManager.ShootProjectile(transform);
+                hasShot = true;
+            }
         }
 
         private void LookAtPlayer()
@@ -40,7 +45,9 @@ namespace Base
         {
             if (color.weaknesses.Contains(bulletColor))
             {
-                Kill();
+                    GameManager.Instance.AudioManager.PlayEnemyDeathSound();
+                    Kill();
+                
             }
         }
 

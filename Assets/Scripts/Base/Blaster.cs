@@ -12,29 +12,27 @@ namespace Base
         private float _range = 100f;
         private STLColor[] _colors = new[] {STLColor.Red, STLColor.Blue, STLColor.Green};
 
-    
 
         private Material _colorIndicatorMaterial;
-        private AudioSource _audioSource;
-        private LaserBullet _laserBullet;
+        public LaserBullet _laserBullet;
+
         public void Initialize()
         {
             _colorIndicatorMaterial = colorIndicator.GetComponent<MeshRenderer>().material;
-            _audioSource = GetComponent<AudioSource>();
-            
+            if (controller == Controller.Right)
+            {
+                _activeColorIndex = 1;
+            }
             SetIndicatorColor();
         }
-        
+
         //Separate function because the controller may connect and disconnect, or not initialize at first
-        
-        private void LoadLaser()
-        {
-            _laserBullet = nozzle. transform.GetComponentInChildren<LaserBullet>();
-        }
-        
+
+        private LaserBullet LoadLaser() => nozzle.transform.GetComponentInChildren<LaserBullet>();
+
         public void Refresh()
         {
-            if(controller == Controller.Right)
+            if (controller == Controller.Right)
             {
                 if (ControllerManager.Instance.IsRightGripPressed() &&
                     ControllerManager.Instance.RightThumbstickAxis().x < 0 || Input.GetKeyDown(KeyCode.Q))
@@ -76,14 +74,18 @@ namespace Base
 
         private void Fire()
         {
-            _audioSource.Play();
-            LoadLaser();
+            if (_laserBullet == null)
+            {
+                _laserBullet = LoadLaser();
+            }
+
             _laserBullet.SetColor(_colors[_activeColorIndex]);
             _laserBullet.Play();
-            
+
             RaycastHit raycastHit;
             bool hasHit = Physics.Raycast(nozzle.transform.position, nozzle.transform.forward, out raycastHit, _range);
-            if(hasHit){
+            if (hasHit)
+            {
                 var enemy = raycastHit.transform.gameObject.GetComponent<Enemy>();
                 if (enemy)
                 {
@@ -110,7 +112,7 @@ namespace Base
         private void SetIndicatorColor()
         {
             _colorIndicatorMaterial.color = Values.ColorMap[_colors[_activeColorIndex]];
-            
+            _colorIndicatorMaterial.SetColor("_EmissionColor", Values.ColorMap[_colors[_activeColorIndex]]);
         }
     }
 
