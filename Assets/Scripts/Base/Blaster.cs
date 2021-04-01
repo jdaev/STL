@@ -10,6 +10,7 @@ namespace Base
         [SerializeField] private Controller controller;
         private int _activeColorIndex = 0;
         private float _range = 100f;
+        private float _blasterRadius = 1f;
         private STLColor[] _colors = new[] {STLColor.Red, STLColor.Blue, STLColor.Green};
 
 
@@ -83,7 +84,7 @@ namespace Base
             _laserBullet.Play();
 
             RaycastHit raycastHit;
-            bool hasHit = Physics.Raycast(nozzle.transform.position, nozzle.transform.forward, out raycastHit, _range);
+            bool hasHit = Physics.SphereCast(nozzle.transform.position,_blasterRadius, nozzle.transform.forward, out raycastHit, _range);
             if (hasHit)
             {
                 var enemy = raycastHit.transform.gameObject.GetComponent<Enemy>();
