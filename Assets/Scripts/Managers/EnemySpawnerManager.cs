@@ -13,12 +13,20 @@ namespace Managers
 
         public EnemySpawnerManager()
         {
-            _spawnerParent = new GameObject();
+            createSpawnerParent();
             _enemySpawners = new Queue<EnemySpawner>();
+        }
+
+        private void createSpawnerParent()
+        {
+            
+                _spawnerParent = new GameObject();
+            
         }
 
         public void AddEnemySpawner(SpawnData spawnData, float levelLength, float spawnDelay)
         {
+            if(_spawnerParent==null) createSpawnerParent();
             GameObject spawner = new GameObject("EnemySpawner");
             spawner.transform.SetParent(_spawnerParent.transform);
             EnemySpawner enemySpawner;
