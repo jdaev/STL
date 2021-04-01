@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using Managers;
 using UnityEngine;
 
@@ -27,15 +28,26 @@ namespace Base
         public void Refresh()
         {
         }
-        
+
+        private void OnCollisionEnter(Collision other)
+        {
+            //This collider is attached to the main camera, i,e; The player head
+            //Easier to get this tag than to get the player layer.
+            if (other.gameObject.CompareTag("MainCamera"))
+            {
+                GameManager.Instance.PlayerManager.Player.OnEnemyHit();
+                GameManager.Instance.ProjectileManager.RemoveProjectile(this);
+            }
+        }
+
         public void Pooled()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void DePooled()
         {
-            throw new System.NotImplementedException();
+            _rigidbody.velocity = Vector3.zero;
         }
 
         
