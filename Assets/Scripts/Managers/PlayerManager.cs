@@ -9,7 +9,7 @@ namespace Managers
         private Blaster _rightBlaster;
         private Blaster _leftBlaster;
 
-        public int Score { get; private set; } = 0;
+        public int Score () =>GameManager.Instance.EnemyManager.EnemiesKilled*_streak ;
 
         private int _streak = 1;
         private int _hits = 0;
@@ -17,8 +17,8 @@ namespace Managers
         private readonly int _hitsToKill = 5;
         private readonly int _killsToStreak = 5;
 
-        private int _streakTime = 5;
-        private int _hitTime = 5;
+        private int _streakTime = 10;
+        private int _hitTime = 10;
 
 
         private float _secondsSinceLastHit = 0;
@@ -45,13 +45,14 @@ namespace Managers
             _leftBlaster.Refresh();
             HitTimer();
             StreakTimer();
+            UIManager.Instance.UpdateHUD(Score().ToString(),Player.HitCount.ToString());
         }
 
         private void HitTimer()
         {
             if (_hits >= _hitsToKill)
             {
-                Debug.Log("You Died");
+                Player.Kill();
                 return;
             }
 
@@ -74,12 +75,12 @@ namespace Managers
         {
             if (_streak >= _killsToStreak)
             {
-                Debug.Log("Streak Multiplied" + _streak);
+                _streak = _streak * 2;
                 return;
             }
             if (_secondsSinceLastKill >= _streakTime)
             {
-                _streak = 0;
+                _streak = 1;
             }
             else 
             {   if(GameManager.Instance.EnemyManager.EnemiesKilled != _lastKillCount)
