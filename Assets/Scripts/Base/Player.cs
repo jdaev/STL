@@ -21,17 +21,19 @@ public class Player : MonoBehaviour
     }
     public void Kill()
     {
-        
+        Time.timeScale = 0;
+        ControllerManager.Instance.ToggleInteractors(true);
+        GameManager.Instance.GameAudioSource.Stop();
+        UIManager.Instance.OnGameOver();
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnEnemyHit()
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            other.gameObject.GetComponent<Enemy>().Kill();
-            HitCount++;
-        }
+        Debug.Log(HitCount);
+        HitCount++;
     }
+
+    
 
     private void Move()
     {   
@@ -39,9 +41,5 @@ public class Player : MonoBehaviour
         if(transform.position.z<GameManager.Instance.Level.levelLength)
             transform.Translate(transform.forward * (GameManager.Instance.Level.playerSpeed * Time.deltaTime));
     }
-
-    public void Stop()
-    {
-        
-    }
+    
 }
