@@ -66,7 +66,7 @@ namespace Managers
 
         public void ReloadScene()
         {
-            SceneManager.LoadScene("TestScene");
+            SceneManager.LoadScene("GameScene");
         }
     }
 }
