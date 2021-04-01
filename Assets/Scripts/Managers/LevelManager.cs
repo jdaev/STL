@@ -23,7 +23,7 @@ namespace Managers
 
         public void LoadLevel()
         {
-            string json = File.ReadAllText(Application.streamingAssetsPath + "/Maps/map.json");
+            string json = File.ReadAllText(Application.streamingAssetsPath + $"/Maps/{GameContext.SelectedLevel}.json");
             Level = JsonUtility.FromJson<Level>(json);
 
             foreach (var spawnPoint in Level.spawnPoints)

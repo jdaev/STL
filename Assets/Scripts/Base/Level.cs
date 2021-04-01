@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine.Serialization;
 
 namespace Base
@@ -19,6 +20,16 @@ namespace Base
             this.soundtrack = soundtrack;
             this.spawnPoints = spawnPoints;
             this.spawnDistanceFromPlayer = spawnDistanceFromPlayer;
+        }
+    }
+    [Serializable]
+    public class LevelNames
+    {
+        public string[] levels;
+
+        public LevelNames(string[] levels)
+        {
+            this.levels = levels;
         }
     }
 }
