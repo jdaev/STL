@@ -154,6 +154,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "58d9db75-caca-4499-a6ec-25659692d420",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -330,6 +338,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Haptic Device",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "17bcc0c9-1df5-46ff-b207-11e0feffc9ed",
+                    "path": "<XRController>{LeftHand}/menuButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -607,6 +626,55 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "Haptic Device",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Player",
+            "id": "f5476284-af20-4595-8c86-74765fac3a3b",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "549c0be0-9eed-472c-b882-bddf4888bb24",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7b07849e-210a-4941-9f35-29359ef8bbff",
+                    "path": "<XRController>{LeftHand}/menuButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14e27678-3599-4ae6-8568-a3244539289b",
+                    "path": "<XRController>{LeftHand}/menu",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f11f2c00-bd27-47c8-b063-4efcbe512c54",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
