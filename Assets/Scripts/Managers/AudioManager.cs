@@ -16,9 +16,11 @@ namespace Managers
 
         private AudioClip _musicClip;
         private string _musicFile;
-
+        
         
         private GameFlow _gameFlow;
+
+        public Color color;
         
         public void Initialize()
         {
@@ -28,6 +30,11 @@ namespace Managers
             
             _gameFlow = GameObject.Find("MainScripts").GetComponent<GameFlow>();
 
+        }
+
+        public void Refresh()
+        {
+            
         }
 
         public void PlaySoundtrack()

@@ -11,6 +11,21 @@
       "position": 1
     },
     {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 10,
+      "position": 2
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 10,
+      "position": 3
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 10,
+      "position": 4
+    },
+    {
       "color": "Red",
       "spawnAtProgressPercentage": 20,
       "position": 0

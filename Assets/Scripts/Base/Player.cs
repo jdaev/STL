@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
 
     public void OnEnemyHit()
     {
-        Debug.Log(HitCount);
+        //Kill();
         HitCount++;
     }
 

@@ -8,22 +8,38 @@ namespace Base
     public class Enemy : MonoBehaviour, IPoolable
     {
         public ShootableColor color;
-        private float speed = 10f;
-        private bool hasShot = false;
+        private readonly float _speed = 10f;
+        private readonly float _turnAngle = 5f;
+        private readonly float _minimumDistance = 20f;
+        private bool _hasShot = false;
+        private Player _player;
+
         public void Initialize()
         {
+            _player = GameManager.Instance.PlayerManager.Player;
         }
-        // bool AnimatorIsPlaying(){
-        //     return _animator.GetCurrentAnimatorStateInfo(0).length >
-        //            _animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-        // }
+
         public void Refresh()
-        {   
-            LookAtPlayer();
-            if (!hasShot && Vector3.Angle(transform.position,GameManager.Instance.PlayerManager.Player.transform.position)<5)
+        {
+            
+            if (!_hasShot && Vector3.Angle(transform.position, _player.transform.position) < _turnAngle)
             {
                 GameManager.Instance.ProjectileManager.ShootProjectile(transform);
-                hasShot = true;
+                _hasShot = true;
+            }
+            else
+            {
+                LookAtPlayer();
+            }
+
+            if (Vector3.Distance(transform.position, _player.transform.position) > _minimumDistance)
+            {
+                MoveTowardsPlayer();
+            }
+
+            if (transform.position.z < _player.transform.position.z)
+            {
+                Kill();
             }
         }
 
@@ -32,22 +48,21 @@ namespace Base
             Transform target = GameManager.Instance.PlayerManager.Player.transform;
             Vector3 relativePos = target.position - transform.position;
             Quaternion toRotation = Quaternion.LookRotation(relativePos);
-            transform.rotation =  Quaternion.Lerp(transform.rotation, toRotation, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, _speed * Time.deltaTime);
         }
-        
-        private void Move()
+
+        private void MoveTowardsPlayer()
         {
-            transform.position= Vector3.MoveTowards(transform.position,
-                GameManager.Instance.PlayerManager.Player.transform.position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position,
+                _player.transform.position, _speed * Time.deltaTime);
         }
 
         public void OnBulletHit(STLColor bulletColor)
         {
             if (color.weaknesses.Contains(bulletColor))
             {
-                    GameManager.Instance.AudioManager.PlayEnemyDeathSound();
-                    Kill();
-                
+                GameManager.Instance.AudioManager.PlayEnemyDeathSound();
+                Kill();
             }
         }
 
@@ -55,6 +70,7 @@ namespace Base
         {
             GameManager.Instance.EnemyManager.RemoveEnemy(this);
         }
+
         public void Pooled()
         {
         }
@@ -62,6 +78,5 @@ namespace Base
         public void DePooled()
         {
         }
-
     }
 }

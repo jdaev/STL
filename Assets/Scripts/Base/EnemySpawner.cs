@@ -20,8 +20,7 @@ namespace Base
 
         public void SpawnEnemy()
         {
-            GameManager.Instance.EnemyManager.SpawnEnemy(Values.ShootableColors[_color], transform
-            );
+            GameManager.Instance.EnemyManager.SpawnEnemy(Values.ShootableColors[_color], transform);
         }
     }
 }

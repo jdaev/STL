@@ -15,7 +15,6 @@ namespace Base
         public void Initialize()
         {
             _rigidbody = GetComponent<Rigidbody>();
-            Player player = GameManager.Instance.PlayerManager.Player;
             float playerSpeed = GameManager.Instance.Level.playerSpeed;
             GameObject mainCamera = Camera.main.gameObject;
             Vector3 cameraPosition = mainCamera.transform.position;

@@ -41,10 +41,13 @@ namespace Managers
         public void Refresh()
         {
             Player.Refresh();
+            
             _rightBlaster.Refresh();
             _leftBlaster.Refresh();
+            
             HitTimer();
             StreakTimer();
+            
             UIManager.Instance.UpdateHUD(Score().ToString(),Player.HitCount.ToString());
         }
 

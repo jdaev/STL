@@ -81,6 +81,11 @@
       "position": 3
     },
     {
+      "color": "Green",
+      "spawnAtProgressPercentage": 11,
+      "position": 4
+    },
+    {
       "color": "Blue",
       "spawnAtProgressPercentage": 15,
       "position": 0
@@ -99,6 +104,11 @@
       "color": "Red",
       "spawnAtProgressPercentage": 15,
       "position": 3
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 15,
+      "position": 4
     },
     {
       "color": "Blue",
