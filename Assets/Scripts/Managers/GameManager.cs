@@ -8,11 +8,18 @@ namespace Managers
     {
 
         public readonly PlayerManager PlayerManager = new PlayerManager();
+        
         public readonly EnemyManager EnemyManager = new EnemyManager();
         public readonly EnemyFactory EnemyFactory = new EnemyFactory();
+        
         public readonly ProjectileManager ProjectileManager = new ProjectileManager();
         public readonly ProjectileFactory ProjectileFactory = new ProjectileFactory();
+        
+        public readonly LaserManager LaserManager = new LaserManager();
+        public readonly LaserFactory LaserFactory = new LaserFactory();
+
         public readonly EnemySpawnerManager EnemySpawnerManager = new EnemySpawnerManager();
+        
         public readonly AudioManager AudioManager = new AudioManager();
         private readonly LevelManager _levelManager = new LevelManager();
 
@@ -42,6 +49,9 @@ namespace Managers
             ProjectileFactory.Initialize();
             ProjectileManager.Initialize();
             
+            LaserFactory.Initialize();
+            LaserManager.Initialize();
+            
             EnemySpawnerManager.Initialize();
             StartGame();
             
@@ -59,6 +69,7 @@ namespace Managers
             PlayerManager.Refresh();
             EnemyManager.Refresh();
             ProjectileManager.Refresh();
+            LaserManager.Refresh();
             
             EnemySpawnerManager.Refresh();
             
