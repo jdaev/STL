@@ -15,7 +15,6 @@ namespace Base
 
 
         private Material _colorIndicatorMaterial;
-        public LaserBullet _laserBullet;
 
         public void Initialize()
         {
@@ -24,12 +23,10 @@ namespace Base
             {
                 _activeColorIndex = 1;
             }
+
             SetIndicatorColor();
         }
-
-        //Separate function because the controller may connect and disconnect, or not initialize at first
-
-        private LaserBullet LoadLaser() => nozzle.transform.GetComponentInChildren<LaserBullet>();
+        
 
         public void Refresh()
         {
@@ -75,16 +72,9 @@ namespace Base
 
         private void Fire()
         {
-            if (_laserBullet == null)
-            {
-                _laserBullet = LoadLaser();
-            }
-
-            _laserBullet.SetColor(_colors[_activeColorIndex]);
-            _laserBullet.Play();
-
             RaycastHit raycastHit;
-            bool hasHit = Physics.SphereCast(nozzle.transform.position,_blasterRadius, nozzle.transform.forward, out raycastHit, _range);
+            bool hasHit = Physics.SphereCast(nozzle.transform.position, _blasterRadius, nozzle.transform.forward,
+                out raycastHit, _range);
             if (hasHit)
             {
                 var enemy = raycastHit.transform.gameObject.GetComponent<Enemy>();
@@ -93,6 +83,9 @@ namespace Base
                     enemy.OnBulletHit(_colors[_activeColorIndex]);
                 }
             }
+            GameManager.Instance.AudioManager.PlayFireSound();
+            GameManager.Instance.LaserManager.ShootLaser(_colors[_activeColorIndex], nozzle.transform,
+                hasHit ? raycastHit.point : nozzle.transform.position+  ( transform.forward*_range));
         }
 
 

@@ -7,16 +7,16 @@ namespace Managers
     public class EnemyManager
     {
         private readonly Dictionary<STLColor, List<Enemy>> _enemyDict;
-        private readonly Stack<Enemy> _enemysToRemoveStack;
-        private readonly Stack<Enemy> _enemysToAddStack;
+        private readonly Stack<Enemy> _enemiesToRemoveStack;
+        private readonly Stack<Enemy> _enemiesToAddStack;
 
         public int EnemiesKilled { get; private set; }
 
         public EnemyManager()
         {
             _enemyDict = new Dictionary<STLColor, List<Enemy>>();
-            _enemysToRemoveStack = new Stack<Enemy>();
-            _enemysToAddStack = new Stack<Enemy>();
+            _enemiesToRemoveStack = new Stack<Enemy>();
+            _enemiesToAddStack = new Stack<Enemy>();
         }
 
         public void Initialize()
@@ -25,9 +25,9 @@ namespace Managers
 
         public void Refresh()
         {
-            while (_enemysToRemoveStack.Count > 0)
+            while (_enemiesToRemoveStack.Count > 0)
             {
-                Enemy toRemove = _enemysToRemoveStack.Pop();
+                Enemy toRemove = _enemiesToRemoveStack.Pop();
                 STLColor color = toRemove.color.color;
                 if (!_enemyDict.ContainsKey(color) || !_enemyDict[color].Contains(toRemove))
                 {
@@ -44,10 +44,10 @@ namespace Managers
             }
 
 
-            //Add Enemys to the dictionary from the "toAdd stack"
-            while (_enemysToAddStack.Count > 0)
+            //Add Enemies to the dictionary from the "toAdd stack"
+            while (_enemiesToAddStack.Count > 0)
             {
-                Enemy toAdd = _enemysToAddStack.Pop();
+                Enemy toAdd = _enemiesToAddStack.Pop();
                 STLColor color = toAdd.color.color;
 
                 if (!_enemyDict.ContainsKey(color)) // || !enemyDict[kv.Key].Contains(kv.Value))
@@ -79,13 +79,13 @@ namespace Managers
 
         private void AddEnemy(Enemy toAdd)
         {
-            _enemysToAddStack.Push(toAdd);
+            _enemiesToAddStack.Push(toAdd);
         }
 
         public void RemoveEnemy(Enemy toRemove)
         {
             EnemiesKilled++;
-            _enemysToRemoveStack.Push(toRemove);
+            _enemiesToRemoveStack.Push(toRemove);
         }
     }
 }

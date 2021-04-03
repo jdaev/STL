@@ -7,57 +7,52 @@ namespace Managers
 {
     public class AudioManager
     {
-        
-
         private AudioSource _audioSource;
-        
+
         private AudioClip _fireClip;
         private AudioClip _enemyKillClip;
 
         private AudioClip _musicClip;
         private string _musicFile;
-        
-        
+
+
         private GameFlow _gameFlow;
 
-        public Color color;
-        
+
         public void Initialize()
         {
             _audioSource = (AudioSource) GameManager.Instance.GameAudioSource;
-            _enemyKillClip =  Resources.Load<AudioClip>("Sounds/BassDrop");
-            _fireClip =  Resources.Load<AudioClip>("Sounds/LaserFire");
-            
-            _gameFlow = GameObject.Find("MainScripts").GetComponent<GameFlow>();
+            _enemyKillClip = Resources.Load<AudioClip>("Sounds/BassDrop");
+            _fireClip = Resources.Load<AudioClip>("Sounds/Shot");
 
+            _gameFlow = GameObject.Find("MainScripts").GetComponent<GameFlow>();
         }
 
         public void Refresh()
         {
-            
         }
 
         public void PlaySoundtrack()
         {
             _musicFile = "Music/" + GameManager.Instance.Level.soundtrack + ".ogg";
             _gameFlow.StartCoroutine(MusicPlayer());
-
         }
 
         public void PlayFireSound()
         {
-            _audioSource.PlayOneShot(_fireClip,10);
+            _audioSource.PlayOneShot(_fireClip, 10);
         }
-        
+
         public void PlayEnemyDeathSound()
         {
-            _audioSource.PlayOneShot(_enemyKillClip,10);
+            _audioSource.PlayOneShot(_enemyKillClip, 10);
         }
-        
+
 
         IEnumerator MusicPlayer()
         {
-            using UnityWebRequest uwr = UnityWebRequestMultimedia.GetAudioClip(GetFileLocation(_musicFile),AudioType.OGGVORBIS);
+            using UnityWebRequest uwr =
+                UnityWebRequestMultimedia.GetAudioClip(GetFileLocation(_musicFile), AudioType.OGGVORBIS);
             yield return uwr.SendWebRequest();
             if (uwr.result == UnityWebRequest.Result.ConnectionError)
             {
@@ -71,7 +66,6 @@ namespace Managers
                     AudioClip currentClip = _audioSource.clip;
                     _audioSource = null;
                     currentClip.UnloadAudioData();
-                        
                 }
 
                 _audioSource.loop = true;
@@ -79,14 +73,12 @@ namespace Managers
                 _audioSource.clip = DownloadHandlerAudioClip.GetContent(uwr);
                 _audioSource.Play();
                 yield return null;
-
             }
         }
-        
+
         private static string GetFileLocation(string relativePath)
         {
             return "file://" + Path.Combine(Application.streamingAssetsPath, relativePath);
         }
-        
     }
 }

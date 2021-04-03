@@ -1,17 +1,13 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Managers;
+﻿using Managers;
 using UnityEngine;
 
 namespace Base
 {
     public class Projectile : MonoBehaviour, IPoolable
     {
-
         [SerializeField] private float timeToReachPlayer = 5f;
-        [HideInInspector]
-        public Vector3 destination;
         private Rigidbody _rigidbody;
+
         public void Initialize()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -23,7 +19,7 @@ namespace Base
                                               new Vector3(0, 0, playerSpeed);
             _rigidbody.velocity = estimatedPlayerPosition;
         }
-        
+
         public void Refresh()
         {
         }
@@ -41,17 +37,11 @@ namespace Base
 
         public void Pooled()
         {
-            
         }
 
         public void DePooled()
         {
             _rigidbody.velocity = Vector3.zero;
         }
-
-        
-        
-
-        
     }
 }

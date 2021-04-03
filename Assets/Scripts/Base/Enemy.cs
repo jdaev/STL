@@ -39,7 +39,10 @@ namespace Base
 
             if (transform.position.z < _player.transform.position.z)
             {
-                Kill();
+                //Clear out the enemy
+                //TODO Find a way to implement this without messing with the score
+                //Kill();
+                
             }
         }
 
@@ -59,14 +62,12 @@ namespace Base
 
         public void OnBulletHit(STLColor bulletColor)
         {
-            if (color.weaknesses.Contains(bulletColor))
-            {
-                GameManager.Instance.AudioManager.PlayEnemyDeathSound();
-                Kill();
-            }
+            if (!color.weaknesses.Contains(bulletColor)) return;
+            GameManager.Instance.AudioManager.PlayEnemyDeathSound();
+            Kill();
         }
 
-        public void Kill()
+        private void Kill()
         {
             GameManager.Instance.EnemyManager.RemoveEnemy(this);
         }

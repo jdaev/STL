@@ -1,10 +1,6 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
-using InputDevice = UnityEngine.InputSystem.InputDevice;
 
 namespace Managers
 {
@@ -12,7 +8,6 @@ namespace Managers
     {
         private GameObject _rightHandGameObject;
         private GameObject _leftHandGameObject;
-        private GameObject _headset;
 
         #region Singleton
 
@@ -39,12 +34,11 @@ namespace Managers
         public Vector2 LeftThumbstickAxis() => _leftHandController.rotateAnchorAction.action.ReadValue<Vector2>();
 
 
-        public void Initialize(GameObject leftHandController, GameObject rightHandController, GameObject headset,
+        public void Initialize(GameObject leftHandController, GameObject rightHandController,
             InputActionReference pauseInputAction)
         {
             this._leftHandGameObject = leftHandController;
             this._rightHandGameObject = rightHandController;
-            this._headset = headset;
 
             _rightHandController = _rightHandGameObject.GetComponent<ActionBasedController>();
             _leftHandController = _leftHandGameObject.GetComponent<ActionBasedController>();
@@ -69,7 +63,7 @@ namespace Managers
             lineRenderer.enabled = toggle;
             xrInteractorLineVisual.enabled = toggle;
         }
-        
+
         private void ToggleRightHandInteractors(bool toggle)
         {
             XRRayInteractor xrRayInteractor = _rightHandGameObject.GetComponent<XRRayInteractor>();

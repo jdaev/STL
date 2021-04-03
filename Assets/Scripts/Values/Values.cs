@@ -22,20 +22,20 @@ public static class Values
 
     public static readonly Dictionary<SpawnPosition, float> SpawnX = new Dictionary<SpawnPosition, float>()
     {
-        {SpawnPosition.FrontLeft, -5}, {SpawnPosition.FrontRight, 5}, {SpawnPosition.Center, 0},
-        {SpawnPosition.SideLeft, -10}, {SpawnPosition.SideRight, 10},
+        {SpawnPosition.FrontLeft, -10}, {SpawnPosition.FrontRight, 10}, {SpawnPosition.Center, 0},
+        {SpawnPosition.SideLeft, -25}, {SpawnPosition.SideRight, 25},
     };
 
     public static readonly Dictionary<SpawnPosition, float> SpawnY = new Dictionary<SpawnPosition, float>()
     {
-        {SpawnPosition.FrontLeft, 0}, {SpawnPosition.FrontRight, 0}, {SpawnPosition.Center, 2},
-        {SpawnPosition.SideLeft, 3}, {SpawnPosition.SideRight, 3},
+        {SpawnPosition.FrontLeft, 2}, {SpawnPosition.FrontRight, 2}, {SpawnPosition.Center, 4},
+        {SpawnPosition.SideLeft, 6}, {SpawnPosition.SideRight, 6},
     };
 
     public static readonly Dictionary<SpawnPosition, float> SpawnZ = new Dictionary<SpawnPosition, float>()
     {
         {SpawnPosition.FrontLeft, 2}, {SpawnPosition.FrontRight, 2}, {SpawnPosition.Center, 0},
-        {SpawnPosition.SideLeft, 0}, {SpawnPosition.SideRight, 0},
+        {SpawnPosition.SideLeft, -10}, {SpawnPosition.SideRight, -10},
     };
 }
 

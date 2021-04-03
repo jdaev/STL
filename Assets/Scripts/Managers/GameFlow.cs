@@ -10,7 +10,6 @@ namespace Managers
     {
         [Header("Devices")] [SerializeField] private GameObject rightController;
         [SerializeField] private GameObject leftController;
-        [SerializeField] private GameObject headset;
 
         [Header("Player")] [SerializeField] private Blaster rightBlaster;
         [SerializeField] private Blaster leftBlaster;
@@ -36,7 +35,7 @@ namespace Managers
         {
             GameManager.Instance.Initialize(rightBlaster, leftBlaster, player, musicSource);
             UIManager.Instance.Initialize(gameOverMenu, pauseMenu,scoreText,hitText);
-            ControllerManager.Instance.Initialize(leftController, rightController, headset, pauseActionReference);
+            ControllerManager.Instance.Initialize(leftController, rightController, pauseActionReference);
 
             ControllerManager.Instance.PauseInputAction.action.performed += PauseGame;
         }
