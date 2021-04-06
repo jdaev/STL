@@ -17,10 +17,9 @@ namespace Managers
 
         [Header("Audio")] [SerializeField] private AudioSource musicSource;
 
-        [Header("UI")] 
-        
-        [SerializeField] private GameObject pauseMenu;
+        [Header("UI")] [SerializeField] private GameObject pauseMenu;
         [SerializeField] private GameObject gameOverMenu;
+        [SerializeField] private GameObject victoryMenu;
         [SerializeField] private TextMeshProUGUI scoreText;
         [SerializeField] private TextMeshProUGUI hitText;
 
@@ -34,7 +33,7 @@ namespace Managers
         public void Start()
         {
             GameManager.Instance.Initialize(rightBlaster, leftBlaster, player, musicSource);
-            UIManager.Instance.Initialize(gameOverMenu, pauseMenu,scoreText,hitText);
+            UIManager.Instance.Initialize(gameOverMenu, pauseMenu, victoryMenu, scoreText, hitText);
             ControllerManager.Instance.Initialize(leftController, rightController, pauseActionReference);
 
             ControllerManager.Instance.PauseInputAction.action.performed += PauseGame;

@@ -413,6 +413,8 @@
   ],
   "levelLength": 826,
   "playerSpeed": 2,
+  "spawnCountMax": 5,
+  "spawnCountMin" : 1,
   "soundtrack": "Osiris",
   "spawnDistanceFromPlayer" : 40
 }

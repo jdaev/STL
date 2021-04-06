@@ -13,13 +13,19 @@ namespace Base
         
         public SpawnData[] spawnPoints;
         public float spawnDistanceFromPlayer;
-        public Level(float levelLength, float playerSpeed, string soundtrack, SpawnData[] spawnPoints, float spawnDistanceFromPlayer)
+
+        public int spawnCountMin;
+        public int spawnCountMax;
+        
+        public Level(float levelLength, float playerSpeed, string soundtrack, SpawnData[] spawnPoints, float spawnDistanceFromPlayer, int spawnCountMin, int spawnCountMax)
         {
             this.levelLength = levelLength;
             this.playerSpeed = playerSpeed;
             this.soundtrack = soundtrack;
             this.spawnPoints = spawnPoints;
             this.spawnDistanceFromPlayer = spawnDistanceFromPlayer;
+            this.spawnCountMax = spawnCountMax;
+            this.spawnCountMin = spawnCountMin;
         }
     }
     [Serializable]

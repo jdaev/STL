@@ -37,7 +37,13 @@ namespace Base
         {   
         
             if(transform.position.z<GameManager.Instance.Level.levelLength)
+            {
                 transform.Translate(transform.forward * (GameManager.Instance.Level.playerSpeed * Time.deltaTime));
+            }
+            else
+            {
+                UIManager.Instance.OnVictory();
+            }
         }
     
     }

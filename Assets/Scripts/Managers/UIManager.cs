@@ -14,16 +14,18 @@ namespace Managers
 
         private GameObject _gameOverMenu;
         private GameObject _pauseMenu;
+        private GameObject _victoryMenu;
         
         private TextMeshProUGUI _scoreText;
         private TextMeshProUGUI _hitText;
 
         
-        public void Initialize(GameObject gameOverMenu,GameObject pauseMenu, TextMeshProUGUI scoreText, TextMeshProUGUI hitText)
+        public void Initialize(GameObject gameOverMenu,GameObject pauseMenu,GameObject victoryMenu, TextMeshProUGUI scoreText, TextMeshProUGUI hitText)
         {
-            this._gameOverMenu = gameOverMenu;
-            this._pauseMenu = pauseMenu;
-
+            _gameOverMenu = gameOverMenu;
+            _pauseMenu = pauseMenu;
+            _victoryMenu = victoryMenu;
+            
             _scoreText = scoreText;
             _hitText = hitText;
 
@@ -33,6 +35,13 @@ namespace Managers
         {
             _pauseMenu.SetActive(false);
             _gameOverMenu.SetActive(true);
+        }
+        
+        public void OnVictory()
+        {
+            _pauseMenu.SetActive(false);
+            _gameOverMenu.SetActive(false);
+            _victoryMenu.SetActive(true);
         }
 
         public void UpdateHUD(string score, string hit)
