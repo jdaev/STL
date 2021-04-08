@@ -1,49 +1,60 @@
 using System;
+using System.Collections;
 using System.Linq;
 using Managers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Base
 {
     public class Enemy : MonoBehaviour, IPoolable
     {
         public ShootableColor color;
-        private readonly float _speed = 10f;
-        private readonly float _turnAngle = 5f;
+        private readonly float _speed = 4f;
         private readonly float _minimumDistance = 20f;
+        private readonly float _waitTime = 5f;
         private bool _hasShot = false;
+        private bool _isWaiting = true;
         private Player _player;
+        private Camera _camera;
 
         public void Initialize()
         {
             _player = GameManager.Instance.PlayerManager.Player;
+            _camera = Camera.main;
         }
 
         public void Refresh()
         {
-            
-            if (!_hasShot && Vector3.Angle(transform.position, _player.transform.position) < _turnAngle)
-            {
-                GameManager.Instance.ProjectileManager.ShootProjectile(transform);
-                _hasShot = true;
-            }
-            else
-            {
-                LookAtPlayer();
-            }
-
-            if (Vector3.Distance(transform.position, _player.transform.position) > _minimumDistance)
+            if (Vector3.SqrMagnitude(transform.position - _player.transform.position) > Math.Pow(_minimumDistance, 2))
             {
                 MoveTowardsPlayer();
             }
-
-            if (transform.position.z < _player.transform.position.z)
+            else
             {
-                //Clear out the enemy
-                //TODO Find a way to implement this without messing with the score
-                //Kill();
-                
+                if (!_hasShot)
+                {
+                    GameManager.Instance.ProjectileManager.ShootProjectile(transform);
+                    _hasShot = true;
+                }
+                else
+                {
+                    if (_isWaiting)
+                        StartCoroutine(Smash());
+                    else
+                        MoveTowardsPlayer();
+                }
             }
+
+
+            LookAtPlayer();
+        }
+
+
+        IEnumerator Smash()
+        {
+            yield return new WaitForSeconds(_waitTime);
+            _isWaiting = false;
         }
 
         private void LookAtPlayer()
@@ -57,8 +68,9 @@ namespace Base
         private void MoveTowardsPlayer()
         {
             transform.position = Vector3.MoveTowards(transform.position,
-                _player.transform.position, _speed * Time.deltaTime);
+                _camera.transform.position, _speed * Time.deltaTime);
         }
+
 
         public void OnBulletHit(STLColor bulletColor)
         {
@@ -67,9 +79,22 @@ namespace Base
             Kill();
         }
 
+        private void OnPlayerHit()
+        {
+            GameManager.Instance.AudioManager.PlayEnemyDeathSound();
+            GameManager.Instance.EnemyManager.RemoveEnemy(this);
+            _player.OnEnemyHit();
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (!other.gameObject.CompareTag("MainCamera")) return;
+            OnPlayerHit();
+        }
+
         private void Kill()
         {
-            GameManager.Instance.EnemyManager.RemoveEnemy(this);
+            GameManager.Instance.EnemyManager.KillEnemy(this);
         }
 
         public void Pooled()
@@ -78,6 +103,7 @@ namespace Base
 
         public void DePooled()
         {
+            _hasShot = false;
         }
     }
 }
