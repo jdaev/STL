@@ -5,7 +5,7 @@ namespace Base
 {
     public class Projectile : MonoBehaviour, IPoolable
     {
-        [SerializeField] private float timeToReachPlayer = 5f;
+        [SerializeField] private float timeToReachPlayer = 1f;
         private Rigidbody _rigidbody;
 
         public void Initialize()
