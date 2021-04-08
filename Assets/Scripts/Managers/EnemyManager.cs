@@ -21,6 +21,9 @@ namespace Managers
 
         public void Initialize()
         {
+            _enemyDict.Clear();
+            _enemiesToAddStack.Clear();
+            _enemiesToRemoveStack.Clear();
         }
 
         public void Refresh()
@@ -82,10 +85,16 @@ namespace Managers
             _enemiesToAddStack.Push(toAdd);
         }
 
-        public void RemoveEnemy(Enemy toRemove)
+        public void KillEnemy(Enemy toRemove)
         {
             EnemiesKilled++;
             _enemiesToRemoveStack.Push(toRemove);
         }
+        public void RemoveEnemy(Enemy toRemove)
+        {
+            _enemiesToRemoveStack.Push(toRemove);
+        }
+
+        
     }
 }
