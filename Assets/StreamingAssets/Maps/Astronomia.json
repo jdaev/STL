@@ -2,6 +2,71 @@
   "spawnPoints": [
     {
       "color": "Blue",
+      "spawnAtProgressPercentage": 5,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 5,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 6,
+      "position": 0
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 6,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 7,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 7,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 7,
+      "position": 2
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 7,
+      "position": 3
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 7,
+      "position": 4
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 8,
+      "position": 0
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 8,
+      "position": 1
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 9,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 9,
+      "position": 1
+    },
+    {
+      "color": "Blue",
       "spawnAtProgressPercentage": 10,
       "position": 0
     },
@@ -11,34 +76,104 @@
       "position": 1
     },
     {
-      "color": "Blue",
-      "spawnAtProgressPercentage": 10,
+      "color": "Green",
+      "spawnAtProgressPercentage": 7,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 7,
+      "position": 1
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 7,
       "position": 2
     },
     {
       "color": "Green",
-      "spawnAtProgressPercentage": 10,
+      "spawnAtProgressPercentage": 7,
       "position": 3
     },
     {
       "color": "Green",
-      "spawnAtProgressPercentage": 10,
+      "spawnAtProgressPercentage": 7,
+      "position": 4
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 15,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 15,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 15,
+      "position": 2
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 15,
+      "position": 3
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 15,
+      "position": 4
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 16,
+      "position": 2
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 18,
+      "position": 2
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 19,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 19,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 19,
+      "position": 2
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 19,
+      "position": 3
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 19,
       "position": 4
     },
     {
       "color": "Red",
       "spawnAtProgressPercentage": 20,
-      "position": 0
+      "position": 2
     },
     {
       "color": "Blue",
-      "spawnAtProgressPercentage": 20,
-      "position": 1
+      "spawnAtProgressPercentage": 22,
+      "position": 2
     },
     {
       "color": "Green",
-      "spawnAtProgressPercentage": 30,
-      "position": 0
+      "spawnAtProgressPercentage": 25,
+      "position": 2
     },
     {
       "color": "Blue",
@@ -47,12 +182,92 @@
     },
     {
       "color": "Red",
-      "spawnAtProgressPercentage": 40,
+      "spawnAtProgressPercentage": 32,
       "position": 0
     },
     {
       "color": "Blue",
+      "spawnAtProgressPercentage": 32,
+      "position": 1
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 34,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 34,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 36,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 36,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 38,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 38,
+      "position": 1
+    },
+    {
+      "color": "Blue",
       "spawnAtProgressPercentage": 40,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 40,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 42,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 42,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 44,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 44,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 46,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 46,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 48,
+      "position": 0
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 48,
       "position": 1
     },
     {
@@ -61,8 +276,48 @@
       "position": 0
     },
     {
-      "color": "Red",
+      "color": "Blue",
       "spawnAtProgressPercentage": 50,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 52,
+      "position": 0
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 52,
+      "position": 1
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 54,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 54,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 56,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 56,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 58,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 58,
       "position": 1
     },
     {
@@ -77,15 +332,75 @@
     },
     {
       "color": "Blue",
-      "spawnAtProgressPercentage": 70,
+      "spawnAtProgressPercentage": 62,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 62,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 64,
       "position": 0
     },
     {
       "color": "Red",
+      "spawnAtProgressPercentage": 64,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 66,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 66,
+      "position": 1
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 68,
+      "position": 0
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 68,
+      "position": 1
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 70,
+      "position": 0
+    },
+    {
+      "color": "Blue",
       "spawnAtProgressPercentage": 70,
       "position": 1
     },
     {
+      "color": "Red",
+      "spawnAtProgressPercentage": 72,
+      "position": 0
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 72,
+      "position": 1
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 76,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 76,
+      "position": 1
+    },
+    {
       "color": "Blue",
       "spawnAtProgressPercentage": 80,
       "position": 0
@@ -97,12 +412,32 @@
     },
     {
       "color": "Blue",
-      "spawnAtProgressPercentage": 90,
+      "spawnAtProgressPercentage": 84,
+      "position": 0
+    },
+    {
+      "color": "Red",
+      "spawnAtProgressPercentage": 84,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 88,
       "position": 0
     },
     {
       "color": "Green",
-      "spawnAtProgressPercentage": 90,
+      "spawnAtProgressPercentage": 88,
+      "position": 1
+    },
+    {
+      "color": "Blue",
+      "spawnAtProgressPercentage": 92,
+      "position": 0
+    },
+    {
+      "color": "Green",
+      "spawnAtProgressPercentage": 92,
       "position": 1
     },
     {
@@ -116,8 +451,10 @@
       "position": 1
     }
   ],
-  "levelLength": 200,
-  "playerSpeed": 2,
+  "levelLength": 220,
+  "playerSpeed": 1,
+  "spawnCountMax": 4,
+  "spawnCountMin" : 1,
   "soundtrack": "Astronomia",
   "spawnDistanceFromPlayer" : 40
 }

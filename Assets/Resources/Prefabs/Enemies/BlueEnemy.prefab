@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 2371916247510329526}
   - component: {fileID: 1593005119608858767}
   - component: {fileID: 4536174472279822829}
-  m_Layer: 0
+  - component: {fileID: 5844331009680691458}
+  m_Layer: 6
   m_Name: BlueEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -168,6 +169,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!54 &5844331009680691458
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2371916247510329417}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2214217654928206219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,6 +260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: eye
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ce46d36b8375bfa45a3ed39b7ffd2ad1, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce46d36b8375bfa45a3ed39b7ffd2ad1, type: 3}
 --- !u!4 &1815164250228362848 stripped
@@ -257,9 +278,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2371916247510329522}
     m_Modifications:
+    - target: {fileID: 100764, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 110766, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 124898, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 134758, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 142168, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 155530, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 161264, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 175022, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
       propertyPath: m_Name
       value: Spiral_02.5 Tentacle trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 175022, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 199446, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 449056, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
       propertyPath: m_RootOrder
@@ -332,6 +389,26 @@ PrefabInstance:
     - target: {fileID: 19998664, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125288960077366, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438214470144928, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480843884761326, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1533929592191112, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960670425276562, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47121ae891ef7614c9f45ce4b4f8fcd6, type: 3}

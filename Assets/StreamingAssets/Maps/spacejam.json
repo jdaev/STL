@@ -411,10 +411,10 @@
       "position": 1
     }
   ],
-  "levelLength": 556,
+  "levelLength": 568,
   "playerSpeed": 2,
   "spawnCountMax": 2,
   "spawnCountMin" : 1,
-  "soundtrack": "Osiris",
+  "soundtrack": "Space Jam",
   "spawnDistanceFromPlayer" : 40
 }

@@ -677,6 +677,28 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9323c292-6ae7-48ba-bfcf-f1f74f127f21",
+                    "path": "<OculusTouchController>{LeftHand}/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba4fa1e8-f633-4811-a3fb-83a9898c460d",
+                    "path": "<OculusTouchController>{RightHand}/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

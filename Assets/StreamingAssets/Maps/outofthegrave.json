@@ -411,10 +411,10 @@
       "position": 1
     }
   ],
-  "levelLength": 556,
+  "levelLength": 456,
   "playerSpeed": 2,
   "spawnCountMax": 2,
   "spawnCountMin" : 1,
-  "soundtrack": "Osiris",
+  "soundtrack": "Out of the Grave",
   "spawnDistanceFromPlayer" : 40
 }
