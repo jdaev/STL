@@ -7,9 +7,11 @@ namespace Base
     {
     
         public int HitCount { get; private set; } = 0;
+        private bool isDead = false;
 
         public void Initialize()
         {
+            isDead = false;
             transform.position.Set(0,GameManager.Instance.PlayerHeight,0);
         }
 
@@ -19,10 +21,14 @@ namespace Base
         }
         public void Kill()
         {
-            Time.timeScale = 0;
-            ControllerManager.Instance.ToggleInteractors(true);
-            GameManager.Instance.GameAudioSource.Stop();
-            UIManager.Instance.OnGameOver();
+            if(!isDead)
+            {
+                isDead = true;
+                Time.timeScale = 0;
+                ControllerManager.Instance.ToggleInteractors(true);
+                GameManager.Instance.GameAudioSource.Stop();
+                UIManager.Instance.OnGameOver();
+            }
         }
 
         public void OnEnemyHit()
@@ -31,8 +37,8 @@ namespace Base
             HitCount++;
         }
 
-    
-
+        
+        
         private void Move()
         {   
         
