@@ -32,11 +32,13 @@ namespace Managers
 
         public void Start()
         {
-            GameManager.Instance.Initialize(rightBlaster, leftBlaster, player, musicSource);
+            Time.timeScale = 1;
+            
             UIManager.Instance.Initialize(gameOverMenu, pauseMenu, victoryMenu, scoreText, hitText);
             ControllerManager.Instance.Initialize(leftController, rightController, pauseActionReference);
 
             ControllerManager.Instance.PauseInputAction.action.performed += PauseGame;
+            GameManager.Instance.Initialize(rightBlaster, leftBlaster, player, musicSource);
         }
 
 
@@ -81,13 +83,21 @@ namespace Managers
 
         public void ReloadScene()
         {
+            
+            _isPaused = false;
+            ControllerManager.Instance.ToggleInteractors(false);
+            ObjectPool.Instance.ClearPool();
             Time.timeScale = 1;
+            musicSource.Play();
+            UIManager.Instance.OnResume();
             SceneManager.LoadScene(GameScene);
         }
+
 
         public void LoadMainMenu()
         {
             Time.timeScale = 1;
+
             SceneManager.LoadScene(MainMenuScene);
         }
     }
