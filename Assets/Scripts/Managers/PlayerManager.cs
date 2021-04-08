@@ -18,7 +18,7 @@ namespace Managers
         private readonly int _killsToStreak = 5;
 
         private int _streakTime = 10;
-        private int _hitTime = 10;
+        private int _hitTime = 3;
 
 
         private float _secondsSinceLastHit = 0;
@@ -48,7 +48,7 @@ namespace Managers
             HitTimer();
             StreakTimer();
             
-            UIManager.Instance.UpdateHUD(Score().ToString(),Player.HitCount.ToString());
+            UIManager.Instance.UpdateHud(Score().ToString(),_hits.ToString());
         }
 
         private void HitTimer()
@@ -56,12 +56,16 @@ namespace Managers
             if (_hits >= _hitsToKill)
             {
                 Player.Kill();
+                _hits = 0;
+                _streak = 0;
+                _secondsSinceLastHit = 0;
                 return;
             }
 
             if (_secondsSinceLastHit >= _hitTime)
             {
                 _hits = 0;
+                _secondsSinceLastHit = 0;
             }
             else 
             {   if(Player.HitCount != _lastHitCount)
