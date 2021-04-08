@@ -23,7 +23,7 @@ namespace Managers
         {
             _audioSource = (AudioSource) GameManager.Instance.GameAudioSource;
             _enemyKillClip = Resources.Load<AudioClip>("Sounds/BassDrop");
-            _fireClip = Resources.Load<AudioClip>("Sounds/Shot");
+            _fireClip = Resources.Load<AudioClip>("Sounds/ShotAlt");
 
             _gameFlow = GameObject.Find("MainScripts").GetComponent<GameFlow>();
         }
@@ -34,7 +34,7 @@ namespace Managers
 
         public void PlaySoundtrack()
         {
-            _musicFile = "Music/" + GameManager.Instance.Level.soundtrack + ".ogg";
+            _musicFile = GameManager.Instance.Level.soundtrack.ToLower().Replace(" ", string.Empty) + ".ogg";
             _gameFlow.StartCoroutine(MusicPlayer());
         }
 
@@ -51,6 +51,7 @@ namespace Managers
 
         IEnumerator MusicPlayer()
         {
+            Debug.Log(GetFileLocation(_musicFile));
             using UnityWebRequest uwr =
                 UnityWebRequestMultimedia.GetAudioClip(GetFileLocation(_musicFile), AudioType.OGGVORBIS);
             yield return uwr.SendWebRequest();
@@ -78,7 +79,14 @@ namespace Managers
 
         private static string GetFileLocation(string relativePath)
         {
-            return "file://" + Path.Combine(Application.streamingAssetsPath, relativePath);
+            string url;
+            #if UNITY_EDITOR || !UNITY_ANDROID
+                url = "file://" + Path.Combine(Path.Combine(Application.streamingAssetsPath, "Music"), relativePath);
+            #else
+                url = "jar:file://" + Application.dataPath + "!/assets/" + Path.Combine("Music", relativePath);
+            #endif
+            
+            return url;
         }
     }
 }
