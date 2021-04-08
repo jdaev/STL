@@ -39,13 +39,14 @@ public class SceneLoader : MonoBehaviour
 
     private void LoadLevelList()
     {
-        string json = File.ReadAllText(Application.streamingAssetsPath + "/levels.json");
+        BetterStreamingAssets.Initialize();
+        string json = BetterStreamingAssets.ReadAllText("levels.json");
         LevelNames levelNames = JsonUtility.FromJson<LevelNames>(json);
         for (int i = 0; i < levelNames.levels.Length; i++)
         {
             string level = levelNames.levels[i];
             float xPos = i * 5;
-            GameObject buttonObj = GameObject.Instantiate(levelButton,  levelSelectorContentParent,false);
+            GameObject buttonObj = GameObject.Instantiate(levelButton, levelSelectorContentParent, false);
 
             RectTransform buttonTransform = buttonObj.GetComponent<RectTransform>();
 
@@ -53,7 +54,7 @@ public class SceneLoader : MonoBehaviour
             TextMeshProUGUI buttonText = button.transform.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = level;
             button.onClick.AddListener(delegate { LoadGameScene(level); });
-            buttonTransform.localPosition = new Vector3(xPos,0,-0.1f); 
+            buttonTransform.localPosition = new Vector3(xPos, 0, -0.1f);
         }
     }
 }
