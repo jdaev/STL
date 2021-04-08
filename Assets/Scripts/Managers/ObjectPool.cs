@@ -18,6 +18,11 @@ namespace Managers
             _objectPoolParent = new GameObject().transform;
             _objectPoolParent.name = "ObjectPool";
         }
+
+        public void ClearPool()
+        {
+            _pooledObjects.Clear();
+        }
     
         public void AddToPool(string objName, IPoolable poolable)
         {
