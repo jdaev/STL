@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Base;
 using UnityEngine;
@@ -13,16 +14,13 @@ namespace Managers
         public float PlayerProgress =>
             (GameManager.Instance.PlayerManager.Player.transform.position.z / Level.levelLength) * 100;
 
-
-        public AudioClip Music;
-
-        private readonly List<UnityWebRequest> _runningWebRequests = new List<UnityWebRequest>();
-
+        
         public void LoadLevel()
         {
-            string json = File.ReadAllText(Application.streamingAssetsPath + $"/Maps/{GameContext.SelectedLevel}.json");
+            BetterStreamingAssets.Initialize();
+            string level = GameContext.SelectedLevel.ToLower().Replace(" ", string.Empty);
+            string json = BetterStreamingAssets.ReadAllText($"Maps/{level}.json");
             Level = JsonUtility.FromJson<Level>(json);
-
             foreach (var spawnPoint in Level.spawnPoints)
             {
                 GameManager.Instance.EnemySpawnerManager.AddEnemySpawner(spawnPoint, Level.levelLength,
