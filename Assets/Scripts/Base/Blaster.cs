@@ -5,9 +5,10 @@ namespace Base
 {
     public class Blaster : MonoBehaviour
     {
-        [SerializeField] private GameObject nozzle;
         [SerializeField] private GameObject colorIndicator;
         [SerializeField] private Controller controller;
+        [SerializeField] private ParticleSystem flashParticleSystem;
+        [SerializeField] private LayerMask enemyLayerMask;
         private int _activeColorIndex = 0;
         private float _range = 100f;
         private float _blasterRadius = 1f;
@@ -15,6 +16,8 @@ namespace Base
 
 
         private Material _colorIndicatorMaterial;
+        private ParticleSystem _muzzleFlash;
+        private GameObject _muzzle;
 
         public void Initialize()
         {
@@ -26,7 +29,7 @@ namespace Base
 
             SetIndicatorColor();
         }
-        
+
 
         public void Refresh()
         {
@@ -73,8 +76,12 @@ namespace Base
         private void Fire()
         {
             RaycastHit raycastHit;
-            bool hasHit = Physics.SphereCast(nozzle.transform.position, _blasterRadius, nozzle.transform.forward,
-                out raycastHit, _range);
+            if (_muzzle==null)
+            {
+                _muzzle = GetComponentInChildren<Muzzle>().gameObject;
+            }
+            bool hasHit = Physics.SphereCast(_muzzle.transform.position, _blasterRadius, _muzzle.transform.forward,
+                out raycastHit, _range,enemyLayerMask);
             if (hasHit)
             {
                 var enemy = raycastHit.transform.gameObject.GetComponent<Enemy>();
@@ -83,9 +90,11 @@ namespace Base
                     enemy.OnBulletHit(_colors[_activeColorIndex]);
                 }
             }
+
             GameManager.Instance.AudioManager.PlayFireSound();
-            GameManager.Instance.LaserManager.ShootLaser(_colors[_activeColorIndex], nozzle.transform,
-                hasHit ? raycastHit.point : nozzle.transform.position+  ( transform.forward*_range));
+            PlayMuzzleFlash();
+            GameManager.Instance.LaserManager.ShootLaser(_colors[_activeColorIndex], _muzzle.transform,
+                hasHit ? raycastHit.point : _muzzle.transform.position + (transform.forward * _range));
         }
 
 
@@ -107,6 +116,17 @@ namespace Base
         {
             _colorIndicatorMaterial.color = Values.ColorMap[_colors[_activeColorIndex]];
             _colorIndicatorMaterial.SetColor("_EmissionColor", Values.ColorMap[_colors[_activeColorIndex]]);
+        }
+
+        private void PlayMuzzleFlash()
+        {
+            if (_muzzleFlash == null)
+            {
+                _muzzleFlash = Instantiate(flashParticleSystem, _muzzle.transform);
+            }
+            ParticleSystem.MainModule settings = _muzzleFlash.main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(Values.ColorMap[_colors[_activeColorIndex]]);
+            _muzzleFlash.Play();
         }
     }
 
