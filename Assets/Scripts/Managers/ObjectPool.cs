@@ -10,8 +10,8 @@ namespace Managers
 
         public static ObjectPool Instance => _instance ??= new ObjectPool();
 
-        private Transform _objectPoolParent;
-        private Dictionary<string, Stack<IPoolable>> _pooledObjects = new Dictionary<string, Stack<IPoolable>>();
+        private readonly Transform _objectPoolParent;
+        private readonly Dictionary<string, Stack<IPoolable>> _pooledObjects = new Dictionary<string, Stack<IPoolable>>();
 
         private ObjectPool()
         {

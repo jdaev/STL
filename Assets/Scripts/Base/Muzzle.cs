@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Muzzle : MonoBehaviour
+namespace Base
 {
-    
+    public class Muzzle : MonoBehaviour
+    {
+        //Empty class just to distinguish component
+    }
 }

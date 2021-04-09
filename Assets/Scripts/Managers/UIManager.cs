@@ -44,7 +44,7 @@ namespace Managers
             _victoryMenu.SetActive(true);
         }
 
-        public void UpdateHUD(string score, string hit)
+        public void UpdateHud(string score, string hit)
         {
             _scoreText.text = score;
             _hitText.text = hit;
@@ -52,7 +52,11 @@ namespace Managers
 
         public void OnPause() => _pauseMenu.SetActive(true);
 
-        public void OnResume() => _pauseMenu.SetActive(false);
+        public void OnResume()
+        {
+            _gameOverMenu.SetActive(false);
+            _pauseMenu.SetActive(false);
+        }
         
         public void Refresh()
         {

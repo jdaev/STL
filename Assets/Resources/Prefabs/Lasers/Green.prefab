@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed87cbbfaeb4492b8ef3d60244433ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1314695696111681801}
   color: 1
 --- !u!120 &1314695696111681801
 LineRenderer:

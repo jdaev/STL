@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using UnityEngine.Serialization;
 
 namespace Base
 {
-    [System.Serializable]
+    [Serializable]
     public class Level
     {
         public float levelLength;

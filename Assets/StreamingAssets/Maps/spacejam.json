@@ -413,8 +413,8 @@
   ],
   "levelLength": 568,
   "playerSpeed": 2,
-  "spawnCountMax": 2,
-  "spawnCountMin" : 1,
+  "spawnCountMax": 4,
+  "spawnCountMin" : 2,
   "soundtrack": "Space Jam",
   "spawnDistanceFromPlayer" : 40
 }

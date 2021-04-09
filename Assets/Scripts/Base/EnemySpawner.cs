@@ -1,6 +1,5 @@
 ﻿using Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Base
 {
@@ -13,14 +12,14 @@ namespace Base
 
         public void Initialize(SpawnData spawnData)
         {
-            this._color = spawnData.color;
-            this._spawnAtProgress = spawnData.spawnAtProgressPercentage;
+            _color = spawnData.color;
+            _spawnAtProgress = spawnData.spawnAtProgressPercentage;
         }
 
 
         public void SpawnEnemy()
         {
-            GameManager.Instance.EnemyManager.SpawnEnemy(Values.ShootableColors[_color], transform);
+            GameManager.Instance.EnemyManager.SpawnEnemy(Values.Values.ShootableColors[_color], transform);
         }
     }
 }

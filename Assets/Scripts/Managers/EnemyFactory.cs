@@ -6,19 +6,15 @@ namespace Managers
 {
     public class EnemyFactory
     {
-        public EnemyFactory()
-        {
-        }
-
         private Dictionary<STLColor, GameObject> _enemyPrefabDict;
 
-        private string enemyPrefabPath = "Prefabs/Enemies/";
+        private const string EnemyPrefabPath = "Prefabs/Enemies/";
 
 
         public void Initialize()
         {
             _enemyPrefabDict = new Dictionary<STLColor, GameObject>();
-            GameObject[] allPrefabs = Resources.LoadAll<GameObject>(enemyPrefabPath);
+            GameObject[] allPrefabs = Resources.LoadAll<GameObject>(EnemyPrefabPath);
             foreach (GameObject prefab in allPrefabs)
             {
                 Enemy enemy = prefab.GetComponent<Enemy>();
@@ -31,7 +27,7 @@ namespace Managers
             Enemy res;
             GameObject resObj;
             IPoolable poolable = ObjectPool.Instance.RetrieveFromPool(color.color.ToString());
-            if (poolable != null )
+            if (poolable != null)
             {
                 resObj = poolable.gameObject;
                 res = resObj.GetComponent<Enemy>();

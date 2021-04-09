@@ -22,8 +22,8 @@ namespace Managers
         public void Initialize()
         {
             _audioSource = (AudioSource) GameManager.Instance.GameAudioSource;
-            _enemyKillClip = Resources.Load<AudioClip>("Sounds/BassDrop");
-            _fireClip = Resources.Load<AudioClip>("Sounds/ShotAlt");
+            _enemyKillClip = Resources.Load<AudioClip>("Sounds/Kill");
+            _fireClip = Resources.Load<AudioClip>("Sounds/Laser");
 
             _gameFlow = GameObject.Find("MainScripts").GetComponent<GameFlow>();
         }
@@ -45,7 +45,7 @@ namespace Managers
 
         public void PlayEnemyDeathSound()
         {
-            _audioSource.PlayOneShot(_enemyKillClip, 10);
+            _audioSource.PlayOneShot(_enemyKillClip, 30);
         }
 
 

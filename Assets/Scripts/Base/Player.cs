@@ -5,25 +5,25 @@ namespace Base
 {
     public class Player : MonoBehaviour
     {
-    
         public int HitCount { get; private set; } = 0;
-        private bool isDead = false;
+        private bool _isDead = false;
 
         public void Initialize()
         {
-            isDead = false;
-            transform.position.Set(0,GameManager.Instance.PlayerHeight,0);
+            _isDead = false;
+            transform.position.Set(0, GameManager.Instance.PlayerHeight, 0);
         }
 
         public void Refresh()
         {
             Move();
         }
+
         public void Kill()
         {
-            if(!isDead)
+            if (!_isDead)
             {
-                isDead = true;
+                _isDead = true;
                 Time.timeScale = 0;
                 ControllerManager.Instance.ToggleInteractors(true);
                 GameManager.Instance.GameAudioSource.Stop();
@@ -37,12 +37,10 @@ namespace Base
             HitCount++;
         }
 
-        
-        
+
         private void Move()
-        {   
-        
-            if(transform.position.z<GameManager.Instance.Level.levelLength)
+        {
+            if (transform.position.z < GameManager.Instance.Level.levelLength)
             {
                 transform.Translate(transform.forward * (GameManager.Instance.Level.playerSpeed * Time.deltaTime));
             }
@@ -51,6 +49,5 @@ namespace Base
                 UIManager.Instance.OnVictory();
             }
         }
-    
     }
 }

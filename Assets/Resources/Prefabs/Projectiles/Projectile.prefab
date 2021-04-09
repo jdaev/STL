@@ -4727,7 +4727,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9121440835883538969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3598, y: 0, z: 1.639}
+  m_LocalPosition: {x: 0.3598, y: 0, z: 1.796}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8078594934816382896}
@@ -4776,7 +4776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToReachPlayer: 5
-  destination: {x: 0, y: 0, z: 0}
+  trailRenderer: {fileID: 3652484800526074157}
+  projectileRigidbody: {fileID: 3088592306889290855}
 --- !u!96 &3652484800526074157
 TrailRenderer:
   serializedVersion: 2
@@ -4797,7 +4798,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ff16fb4a90fe84bec9c8f29698aa0eed, type: 2}
+  - {fileID: 2100000, guid: a4ba6452393c9934fbda3b88896675cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

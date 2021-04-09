@@ -9,7 +9,7 @@ namespace Managers
         private Blaster _rightBlaster;
         private Blaster _leftBlaster;
 
-        public int Score () =>GameManager.Instance.EnemyManager.EnemiesKilled*_streak ;
+        private int Score () =>GameManager.Instance.EnemyManager.EnemiesKilled*_streak ;
 
         private int _streak = 1;
         private int _hits = 0;

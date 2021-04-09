@@ -3,7 +3,6 @@ using System.Collections;
 using System.Linq;
 using Managers;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Base
 {

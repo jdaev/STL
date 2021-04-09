@@ -6,18 +6,18 @@ namespace Base
     public class Projectile : MonoBehaviour, IPoolable
     {
         [SerializeField] private float timeToReachPlayer = 1f;
-        private Rigidbody _rigidbody;
-
+        [SerializeField] private TrailRenderer trailRenderer;
+        [SerializeField] private Rigidbody projectileRigidbody;
+        
         public void Initialize()
         {
-            _rigidbody = GetComponent<Rigidbody>();
             float playerSpeed = GameManager.Instance.Level.playerSpeed;
             GameObject mainCamera = Camera.main.gameObject;
             Vector3 cameraPosition = mainCamera.transform.position;
             var projectilePosition = transform.position;
             Vector3 estimatedPlayerPosition = ((cameraPosition - projectilePosition) / timeToReachPlayer) +
                                               new Vector3(0, 0, playerSpeed);
-            _rigidbody.velocity = estimatedPlayerPosition;
+            projectileRigidbody.velocity = estimatedPlayerPosition;
         }
 
         public void Refresh()
@@ -37,11 +37,13 @@ namespace Base
 
         public void Pooled()
         {
+            trailRenderer.Clear();
         }
 
         public void DePooled()
         {
-            _rigidbody.velocity = Vector3.zero;
+            projectileRigidbody.velocity = Vector3.zero;
+            
         }
     }
 }

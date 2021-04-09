@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
 using Base;
-using Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.IO;
 using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
@@ -15,12 +10,12 @@ public class SceneLoader : MonoBehaviour
     [SerializeField] private GameObject levelSelectorPanel;
     [SerializeField] private Transform levelSelectorContentParent;
     [SerializeField] private GameObject levelButton;
-    private string gameScene = "GameScene";
+    private const string GameScene = "GameScene";
 
     private void LoadGameScene(string level)
     {
         GameContext.SelectedLevel = level;
-        SceneManager.LoadScene(gameScene);
+        SceneManager.LoadScene(GameScene);
     }
 
     public void Start()

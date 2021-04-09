@@ -20,6 +20,9 @@ namespace Managers
 
         public void Initialize()
         {
+            _projectileHashSet.Clear();
+            _projectilesToAddStack.Clear();
+            _projectilesToRemoveStack.Clear();
         }
 
         public void Refresh()

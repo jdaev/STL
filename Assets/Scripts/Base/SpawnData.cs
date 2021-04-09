@@ -1,4 +1,6 @@
 ﻿
+using Values;
+
 namespace Base
 {
     [System.Serializable]

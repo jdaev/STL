@@ -31,13 +31,12 @@ namespace Managers
             var spawnZ = (levelLength * (spawnData.spawnAtProgressPercentage) / 100) + spawnDelay;
             int spawnCount = Random.Range(GameManager.Instance.Level.spawnCountMin,GameManager.Instance.Level.spawnCountMax);
             int spawned = 0;
-            Vector3 spawnPoint = Vector3.zero;
             while (spawned < spawnCount)
             {
-                spawnPoint = new Vector3(Random.Range(Values.SpawnXStart[spawnData.position],
-                    Values.SpawnXEnd[spawnData.position]), Random.Range(Values.SpawnYStart[spawnData.position],
-                    Values.SpawnYEnd[spawnData.position]), Random.Range(Values.SpawnZStart[spawnData.position] + spawnZ,
-                    Values.SpawnZEnd[spawnData.position] + spawnZ));
+                var spawnPoint = new Vector3(Random.Range(Values.Values.SpawnXStart[spawnData.position],
+                    Values.Values.SpawnXEnd[spawnData.position]), Random.Range(Values.Values.SpawnYStart[spawnData.position],
+                    Values.Values.SpawnYEnd[spawnData.position]), Random.Range(Values.Values.SpawnZStart[spawnData.position] + spawnZ,
+                    Values.Values.SpawnZEnd[spawnData.position] + spawnZ));
                 bool hasHit = Physics.CheckSphere(spawnPoint, 0.5f);
                 if (!hasHit)
                 {

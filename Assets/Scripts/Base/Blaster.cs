@@ -12,12 +12,13 @@ namespace Base
         private int _activeColorIndex = 0;
         private float _range = 100f;
         private float _blasterRadius = 1f;
-        private STLColor[] _colors = new[] {STLColor.Red, STLColor.Blue, STLColor.Green};
+        private readonly STLColor[] _colors = new[] {STLColor.Red, STLColor.Blue, STLColor.Green};
 
 
         private Material _colorIndicatorMaterial;
         private ParticleSystem _muzzleFlash;
         private GameObject _muzzle;
+        private static readonly int EmissionColor = Shader.PropertyToID("_EmissionColor");
 
         public void Initialize()
         {
@@ -114,8 +115,8 @@ namespace Base
 
         private void SetIndicatorColor()
         {
-            _colorIndicatorMaterial.color = Values.ColorMap[_colors[_activeColorIndex]];
-            _colorIndicatorMaterial.SetColor("_EmissionColor", Values.ColorMap[_colors[_activeColorIndex]]);
+            _colorIndicatorMaterial.color = Values.Values.ColorMap[_colors[_activeColorIndex]];
+            _colorIndicatorMaterial.SetColor(EmissionColor, Values.Values.ColorMap[_colors[_activeColorIndex]]);
         }
 
         private void PlayMuzzleFlash()
@@ -125,7 +126,7 @@ namespace Base
                 _muzzleFlash = Instantiate(flashParticleSystem, _muzzle.transform);
             }
             ParticleSystem.MainModule settings = _muzzleFlash.main;
-            settings.startColor = new ParticleSystem.MinMaxGradient(Values.ColorMap[_colors[_activeColorIndex]]);
+            settings.startColor = new ParticleSystem.MinMaxGradient(Values.Values.ColorMap[_colors[_activeColorIndex]]);
             _muzzleFlash.Play();
         }
     }

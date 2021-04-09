@@ -413,7 +413,7 @@
   ],
   "levelLength": 456,
   "playerSpeed": 2,
-  "spawnCountMax": 2,
+  "spawnCountMax": 5,
   "spawnCountMin" : 1,
   "soundtrack": "Shivers",
   "spawnDistanceFromPlayer" : 40

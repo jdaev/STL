@@ -20,6 +20,9 @@ namespace Managers
 
         public void Initialize()
         {
+            _laserDict.Clear();
+            _lasersToAddStack.Clear();
+            _lasersToRemoveStack.Clear();
         }
 
         public void Refresh()

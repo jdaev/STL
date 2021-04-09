@@ -37,8 +37,8 @@ namespace Managers
         public void Initialize(GameObject leftHandController, GameObject rightHandController,
             InputActionReference pauseInputAction)
         {
-            this._leftHandGameObject = leftHandController;
-            this._rightHandGameObject = rightHandController;
+            _leftHandGameObject = leftHandController;
+            _rightHandGameObject = rightHandController;
 
             _rightHandController = _rightHandGameObject.GetComponent<ActionBasedController>();
             _leftHandController = _leftHandGameObject.GetComponent<ActionBasedController>();
